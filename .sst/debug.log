@@ -1,14 +1,14 @@
-2023-06-11T14:39:28.929Z  +9481ms [debug] Config loaded {"version":"2.11.3","cdkVersion":"2.79.1","constructsVersion":"10.1.156","config":{"name":"locol-app","region":"us-east-1","stage":"shazmomin","ssmPrefix":"/sst/locol-app/shazmomin/"},"metafile":{"inputs":{"sst.config.ts":{"bytes":418,"imports":[{"path":"sst","kind":"import-statement","external":true},{"path":"sst/constructs","kind":"import-statement","external":true},{"path":"<runtime>","kind":"import-statement","external":true}]}},"outputs":{".sst.config.1686494361027.mjs":{"imports":[{"path":"sst/constructs","kind":"import-statement","external":true}],"exports":["default"],"entryPoint":"sst.config.ts","inputs":{"sst.config.ts":{"bytesInOutput":382}},"bytes":1920}}},"paths":{"config":"C:\\Users\\trist\\locol-app\\sst.config.ts","root":"C:\\Users\\trist\\locol-app","out":"C:\\Users\\trist\\locol-app\\.sst","artifacts":"C:\\Users\\trist\\locol-app\\.sst\\artifacts"}}
-2023-06-11T14:39:29.595Z   +666ms [debug] Using AWS profile 
-2023-06-11T14:39:29.709Z   +114ms [debug] Created AWS client IoTClient
-2023-06-11T14:39:29.709Z     +0ms [debug] Getting IoT endpoint
-2023-06-11T14:39:30.185Z   +476ms [debug] Using IoT endpoint: a2v0ge86kueez6-ats.iot.us-east-1.amazonaws.com
-2023-06-11T14:39:30.185Z     +0ms [debug] Initializing bootstrap context
-2023-06-11T14:39:30.186Z     +1ms [debug] Created AWS client CloudFormationClient
-2023-06-11T14:39:30.702Z   +516ms [debug] Loaded bootstrap status
-2023-06-11T14:39:30.702Z     +0ms [debug] Bootstrap context initialized {"version":"7","bucket":"sstbootstrap-useast124d14e4b-1xxtmi13lf4ss"}
-2023-06-11T14:39:30.704Z     +2ms [debug] Created AWS client S3Client
-2023-06-11T14:39:30.824Z   +120ms [debug] Fetching all metadata
-2023-06-11T14:39:31.194Z   +370ms [debug] IoT connected
-2023-06-11T14:39:31.231Z    +37ms [debug] Fetched metadata from 0 stacks
-2023-06-11T14:39:31.233Z     +2ms [debug] Created AWS client SSMClient
+2023-06-11T16:09:06.551Z  +6477ms [debug] Config loaded {"version":"2.11.3","cdkVersion":"2.79.1","constructsVersion":"10.1.156","config":{"name":"locol-app","region":"us-east-1","stage":"shazmomin","ssmPrefix":"/sst/locol-app/shazmomin/"},"metafile":{"inputs":{"sst.config.ts":{"bytes":418,"imports":[{"path":"sst","kind":"import-statement","external":true},{"path":"sst/constructs","kind":"import-statement","external":true},{"path":"<runtime>","kind":"import-statement","external":true}]}},"outputs":{".sst.config.1686499741318.mjs":{"imports":[{"path":"sst/constructs","kind":"import-statement","external":true}],"exports":["default"],"entryPoint":"sst.config.ts","inputs":{"sst.config.ts":{"bytesInOutput":382}},"bytes":1920}}},"paths":{"config":"C:\\Users\\trist\\locol-app\\sst.config.ts","root":"C:\\Users\\trist\\locol-app","out":"C:\\Users\\trist\\locol-app\\.sst","artifacts":"C:\\Users\\trist\\locol-app\\.sst\\artifacts"}}
+2023-06-11T16:09:06.940Z   +389ms [debug] Using AWS profile 
+2023-06-11T16:09:07.009Z    +69ms [debug] Created AWS client IoTClient
+2023-06-11T16:09:07.009Z     +0ms [debug] Getting IoT endpoint
+2023-06-11T16:09:07.346Z   +337ms [debug] Using IoT endpoint: a2v0ge86kueez6-ats.iot.us-east-1.amazonaws.com
+2023-06-11T16:09:07.346Z     +0ms [debug] Initializing bootstrap context
+2023-06-11T16:09:07.347Z     +1ms [debug] Created AWS client CloudFormationClient
+2023-06-11T16:09:07.798Z   +451ms [debug] Loaded bootstrap status
+2023-06-11T16:09:07.798Z     +0ms [debug] Bootstrap context initialized {"version":"7","bucket":"sstbootstrap-useast124d14e4b-1xxtmi13lf4ss"}
+2023-06-11T16:09:07.799Z     +1ms [debug] Created AWS client S3Client
+2023-06-11T16:09:07.891Z    +92ms [debug] Fetching all metadata
+2023-06-11T16:09:08.242Z   +351ms [debug] Fetched metadata from 0 stacks
+2023-06-11T16:09:08.246Z     +4ms [debug] Created AWS client SSMClient
+2023-06-11T16:09:08.280Z    +34ms [debug] IoT connected
