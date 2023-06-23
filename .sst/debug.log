@@ -1,14 +1,14 @@
-2023-06-19T20:44:51.513Z  +7749ms [debug] Config loaded {"version":"2.11.3","cdkVersion":"2.79.1","constructsVersion":"10.1.156","config":{"name":"locol-app","region":"us-east-1","stage":"shazmomin","ssmPrefix":"/sst/locol-app/shazmomin/"},"metafile":{"inputs":{"sst.config.ts":{"bytes":398,"imports":[{"path":"sst","kind":"import-statement","external":true},{"path":"sst/constructs","kind":"import-statement","external":true},{"path":"<runtime>","kind":"import-statement","external":true}]}},"outputs":{".sst.config.1687207485631.mjs":{"imports":[{"path":"sst/constructs","kind":"import-statement","external":true}],"exports":["default"],"entryPoint":"sst.config.ts","inputs":{"sst.config.ts":{"bytesInOutput":382}},"bytes":1868}}},"paths":{"config":"/Users/shazmomin/Documents/projects/Locol/locol-app/sst.config.ts","root":"/Users/shazmomin/Documents/projects/Locol/locol-app","out":"/Users/shazmomin/Documents/projects/Locol/locol-app/.sst","artifacts":"/Users/shazmomin/Documents/projects/Locol/locol-app/.sst/artifacts"}}
-2023-06-19T20:44:52.030Z   +517ms [debug] Using AWS profile 
-2023-06-19T20:44:52.121Z    +91ms [debug] Created AWS client IoTClient
-2023-06-19T20:44:52.121Z     +0ms [debug] Getting IoT endpoint
-2023-06-19T20:44:52.445Z   +324ms [debug] Using IoT endpoint: a2v0ge86kueez6-ats.iot.us-east-1.amazonaws.com
-2023-06-19T20:44:52.445Z     +0ms [debug] Initializing bootstrap context
-2023-06-19T20:44:52.446Z     +1ms [debug] Created AWS client CloudFormationClient
-2023-06-19T20:44:52.766Z   +320ms [debug] Loaded bootstrap status
-2023-06-19T20:44:52.766Z     +0ms [debug] Bootstrap context initialized {"version":"7","bucket":"sstbootstrap-useast124d14e4b-1xxtmi13lf4ss"}
-2023-06-19T20:44:52.767Z     +1ms [debug] Created AWS client S3Client
-2023-06-19T20:44:52.865Z    +98ms [debug] Fetching all metadata
-2023-06-19T20:44:53.173Z   +308ms [debug] Fetched metadata from 0 stacks
-2023-06-19T20:44:53.176Z     +3ms [debug] Created AWS client SSMClient
-2023-06-19T20:44:53.188Z    +12ms [debug] IoT connected
+2023-06-23T19:43:00.277Z  +7153ms [debug] Config loaded {"version":"2.11.3","cdkVersion":"2.79.1","constructsVersion":"10.1.156","config":{"name":"locol-app","region":"us-east-1","stage":"shazmomin","ssmPrefix":"/sst/locol-app/shazmomin/"},"metafile":{"inputs":{"sst.config.ts":{"bytes":398,"imports":[{"path":"sst","kind":"import-statement","external":true},{"path":"sst/constructs","kind":"import-statement","external":true},{"path":"<runtime>","kind":"import-statement","external":true}]}},"outputs":{".sst.config.1687549374779.mjs":{"imports":[{"path":"sst/constructs","kind":"import-statement","external":true}],"exports":["default"],"entryPoint":"sst.config.ts","inputs":{"sst.config.ts":{"bytesInOutput":382}},"bytes":1868}}},"paths":{"config":"/Users/shazmomin/Documents/projects/Locol/locol-app/sst.config.ts","root":"/Users/shazmomin/Documents/projects/Locol/locol-app","out":"/Users/shazmomin/Documents/projects/Locol/locol-app/.sst","artifacts":"/Users/shazmomin/Documents/projects/Locol/locol-app/.sst/artifacts"}}
+2023-06-23T19:43:00.777Z   +500ms [debug] Using AWS profile 
+2023-06-23T19:43:00.901Z   +124ms [debug] Created AWS client IoTClient
+2023-06-23T19:43:00.901Z     +0ms [debug] Getting IoT endpoint
+2023-06-23T19:43:04.533Z  +3632ms [debug] Using IoT endpoint: a2v0ge86kueez6-ats.iot.us-east-1.amazonaws.com
+2023-06-23T19:43:04.534Z     +1ms [debug] Initializing bootstrap context
+2023-06-23T19:43:04.535Z     +1ms [debug] Created AWS client CloudFormationClient
+2023-06-23T19:43:09.538Z  +5003ms [debug] Loaded bootstrap status
+2023-06-23T19:43:09.538Z     +0ms [debug] Bootstrap context initialized {"version":"7","bucket":"sstbootstrap-useast124d14e4b-1xxtmi13lf4ss"}
+2023-06-23T19:43:09.540Z     +2ms [debug] Created AWS client S3Client
+2023-06-23T19:43:09.662Z   +122ms [debug] Fetching all metadata
+2023-06-23T19:43:09.932Z   +270ms [debug] IoT connected
+2023-06-23T19:43:11.754Z  +1822ms [debug] Fetched metadata from 0 stacks
+2023-06-23T19:43:11.758Z     +4ms [debug] Created AWS client SSMClient
