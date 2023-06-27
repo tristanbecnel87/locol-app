@@ -31,7 +31,7 @@ const formFields = {
 
     'custom:isbusiness': {
         key:'isbusiness',
-        type:'string',
+        type:'boolean',
         required:true,
         label:'Are you registering for a business account?',
         placeholder: 'Type Yes or No',
