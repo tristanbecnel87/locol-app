@@ -6,11 +6,14 @@ import config from 'app/aws-exports';
 import { Storage } from "aws-amplify";
 Amplify.configure(config);
 import "@aws-amplify/ui-react/styles.css";
+import {useRouter} from "next/navigation";
 
 const Page = () => {
+    const router = useRouter()
     const [user, setUser] = useState(null)
     const [fileData, setFileData] = useState();
     const [fileStatus, setFileStatus] = useState(false);
+
 
     useEffect(() => {
         const fetchUserAttributes = async () => {
@@ -22,6 +25,7 @@ const Page = () => {
 
             } catch (error) {
                 console.error("Failed to fetch user attributes.", error);
+                router.push('/auth/signIn')
             }
         };
 
