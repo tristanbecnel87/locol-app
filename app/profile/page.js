@@ -13,6 +13,8 @@ const Page = () => {
     const [user, setUser] = useState(null)
     const [fileData, setFileData] = useState();
     const [fileStatus, setFileStatus] = useState(false);
+    const [imageUrl, setImageUrl] = useState(null);
+
 
 
     useEffect(() => {
@@ -23,6 +25,9 @@ const Page = () => {
                 console.log(currentUser);
                 setUser(currentUser);
 
+                 // Retrieve the image URL
+                 const imageUrl = await getImageUrl(currentUser.attributes.sub, 'pfp');
+                setImageUrl(imageUrl);
             } catch (error) {
                 console.error("Failed to fetch user attributes.", error);
                 router.push('/auth/signIn')
@@ -30,13 +35,31 @@ const Page = () => {
         };
 
         fetchUserAttributes();
-    }, [])
-     const uploadFile = async () => {
-    const result = await Storage.put(fileData.name, fileData, {
-      contentType: fileData.type,
-    });
-    setFileStatus(true);
-    console.log(21, result);
+    }, []);
+
+      const getImageUrl = async (userId, fileName) => {
+    try {
+      const imageUrl = await Storage.get(`${userId}/${fileName}`);
+      return imageUrl;
+    } catch (error) {
+      console.error('Error retrieving image:', error);
+      throw error;
+    }
+  };
+
+     const uploadFile = async () => { //profile picture
+        try {
+            const currentUser = await Auth.currentAuthenticatedUser();
+            const userId = currentUser.attributes.sub;
+            const result = await Storage.put(`${userId}/pfp`, fileData, {
+                contentType: fileData.type,
+            });
+            setFileStatus(true);
+            console.log(21, result);
+            console.log("File uploaded successfully:", result);
+        } catch(error) {
+            console.error("Error uploading file:", error);
+        }
   };
 
 return (
@@ -49,6 +72,7 @@ return (
       <button onClick={uploadFile}>Upload file</button>
     </div>
     {fileStatus ? "File uploaded successfully" : ""}
+    {imageUrl && <img src={imageUrl} alt="Profile Picture" />}
   </div>
 );
 }
