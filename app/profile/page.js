@@ -37,7 +37,7 @@ const Page = () => {
         fetchUserAttributes();
     }, []);
 
-      const getImageUrl = async (userId, fileName) => {
+      const getImageUrl = async (userId, fileName) => { //profile picture
     try {
       const imageUrl = await Storage.get(`${userId}/${fileName}`);
       return imageUrl;
@@ -57,6 +57,10 @@ const Page = () => {
             setFileStatus(true);
             console.log(21, result);
             console.log("File uploaded successfully:", result);
+
+             // Retrieve the updated image URL, essentially infinite pfp uploads without refreshing page
+            const updatedImageUrl = await getImageUrl(userId, 'pfp');
+            setImageUrl(updatedImageUrl);
         } catch(error) {
             console.error("Error uploading file:", error);
         }
