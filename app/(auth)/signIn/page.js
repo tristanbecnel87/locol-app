@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from "react";
+import { useAtom } from 'jotai'
 
 import { Authenticator, useAuthenticator, View } from '@aws-amplify/ui-react';
 import '@aws-amplify/ui-react/styles.css';
@@ -9,6 +10,9 @@ import { Amplify } from 'aws-amplify';
 import config from 'app/aws-exports';
 import { useRouter } from 'next/navigation'
 Amplify.configure(config);
+
+import { userAtom } from "@/components/Context";
+
 
 const formFields = {
   signUp: {
@@ -83,16 +87,22 @@ const formFields = {
 export const UserProfile = () => {
   const router = useRouter()
 
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useAtom(userAtom);
+
   useEffect(() => {
+    console.log("user before signin: ", user)
     const fetchUserAttributes = async () => {
       try {
         const currentUser = await Auth.currentAuthenticatedUser();
         const attributes = currentUser.attributes;
         console.log("User attributes:", attributes);
-        setUser(currentUser);
+        setUser("currentUser");
+        console.log("user from signin: ", user);
 
-        router.push('/dashboard')
+        setTimeout(() => {
+          router.push('/dashboard')
+        }, 10000);
+
       } catch (error) {
         console.error("Failed to fetch user attributes.", error);
       }

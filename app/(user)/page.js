@@ -1,7 +1,10 @@
-export default function Home() {
+const Page = () => {
+
   return (
     <div className="font-montserrat">
-      Locol Dashboard
+      Locol Home
     </div>
   )
 }
+
+export default Page
