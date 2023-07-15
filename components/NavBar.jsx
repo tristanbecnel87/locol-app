@@ -2,13 +2,12 @@
 
 import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import { userAtom } from './Context'
-import { useAtom } from 'jotai'
 import Image from 'next/image'
 import Link from 'next/link'
 import { Auth } from 'aws-amplify';
 import { Amplify } from 'aws-amplify';
 import config from 'app/aws-exports';
+import { useUserContext } from './Context'
 Amplify.configure(config);
 
 
@@ -18,11 +17,15 @@ const disabled = "block mt-4 lg:inline-block lg:mt-0 text-gray-400 pb-2"
 
 const NavBar = async () => {
 
-    const [user, setUser] = useAtom(userAtom)
+    const { user, setUser } = useUserContext()
     const router = useRouter()
 
     useEffect(() => {
-        console.log("user: " + user)
+        if (user) {
+            console.log("user: " + user)
+        } else {
+            console.log("no user")
+        }
     }, [])
 
     return (
@@ -33,6 +36,8 @@ const NavBar = async () => {
                     alt="Vercel Logo"
                     width={126}
                     height={77}
+                    placeholder='blur'
+                    blurDataURL='/LocolLogo.svg'
                 />
             </div>
             <div className="block lg:hidden">
