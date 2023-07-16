@@ -74,7 +74,7 @@ const Page = () => {
       const jsonData = JSON.stringify(data);
 
       // Upload the data to the database
-      const result = await Storage.put(`${userId}/service.json`, jsonData, {
+      const result = await Storage.put(`services/${userId}/service.json`, jsonData, {
         contentType: 'application/json',
       });
 
