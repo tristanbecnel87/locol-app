@@ -18,6 +18,11 @@ const Page = () => {
   const [isDocumentLoaded, setIsDocumentLoaded] = useState(false); //can delete
   const [description, setDescription] = useState(''); //pf description
   const pdfViewerRef = useRef();
+  const [name, setName] = useState(''); //name or nickname
+  const [role, setRole] = useState(''); //roles
+  const [skills, setSkills] = useState(''); //skills
+
+
 
   useEffect(() => {
     const fetchUserAttributes = async () => {
@@ -30,10 +35,17 @@ const Page = () => {
         const imageUrl = await getImageUrl(currentUser.attributes.sub, 'pfp');
         const document = await getDocumentUrl(currentUser.attributes.sub, 'portfolio');
         const description = await getDescription(currentUser.attributes.sub, 'description.txt');
+        const name = await getName(currentUser.attributes.sub, 'name.txt');
+        const role = await getRole(currentUser.attributes.sub, 'role.txt');
+        const skills = await getSkills(currentUser.attributes.sub, 'skills.txt');
+
 
         setImageUrl(imageUrl);
         setDocumentUrl(document);
         setDescription(description);
+        setName(name);
+        setRole(role);
+        setSkills(skills);
       } catch (error) {
         console.error('Failed to fetch user attributes.', error);
         router.push('/auth/signIn');
@@ -71,6 +83,39 @@ const Page = () => {
       return text;
     } catch (error) {
       console.error('Error retrieving profile description:', error);
+      throw error;
+    }
+  };
+   const getName = async (userId, fileName) => {
+    try {
+      const nameUrl = await Storage.get(`${userId}/${fileName}`);
+      const response = await fetch(nameUrl);
+      const text = await response.text();
+      return text;
+    } catch (error) {
+      console.error('Error retrieving name:', error);
+      throw error;
+    }
+  };
+    const getRole = async (userId, fileName) => {
+    try {
+      const roleUrl = await Storage.get(`${userId}/${fileName}`);
+      const response = await fetch(roleUrl);
+      const text = await response.text();
+      return text;
+    } catch (error) {
+      console.error('Error retrieving role:', error);
+      throw error;
+    }
+  };
+     const getSkills = async (userId, fileName) => {
+    try {
+      const skillsUrl = await Storage.get(`${userId}/${fileName}`);
+      const response = await fetch(skillsUrl);
+      const text = await response.text();
+      return text;
+    } catch (error) {
+      console.error('Error retrieving skills:', error);
       throw error;
     }
   };
@@ -123,6 +168,42 @@ const Page = () => {
       console.error('Error uploading text:', error);
     }
   };
+  const uploadName = async () => {
+    try {
+      const currentUser = await Auth.currentAuthenticatedUser();
+      const userId = currentUser.attributes.sub;
+      const result = await Storage.put(`${userId}/name.txt`, name, {
+        contentType: 'text/plain',
+      });
+      console.log('Name uploaded successfully:', result);
+    } catch (error) {
+      console.error('Error uploading name:', error);
+    }
+  };
+   const uploadRole = async () => {
+    try {
+      const currentUser = await Auth.currentAuthenticatedUser();
+      const userId = currentUser.attributes.sub;
+      const result = await Storage.put(`${userId}/role.txt`, role, {
+        contentType: 'text/plain',
+      });
+      console.log('Role uploaded successfully:', result);
+    } catch (error) {
+      console.error('Error uploading role:', error);
+    }
+  };
+    const uploadSkills = async () => {
+    try {
+      const currentUser = await Auth.currentAuthenticatedUser();
+      const userId = currentUser.attributes.sub;
+      const result = await Storage.put(`${userId}/skills.txt`, skills, {
+        contentType: 'text/plain',
+      });
+      console.log('Skills uploaded successfully:', result);
+    } catch (error) {
+      console.error('Error uploading skills:', error);
+    }
+  };
 
   const previewDocument = () => { //this code needs work
     if (isDocumentLoaded) {
@@ -136,6 +217,8 @@ const Page = () => {
   return (
     <div>
       <div>Profile Page for {user?.attributes.email}</div>
+      <div>{user?.attributes['custom:university']}</div>
+      <div>{user?.attributes['custom:classification']}</div>
       <div>
         <input type="file" onChange={(e) => setFileData(e.target.files[0])} />
       </div>
@@ -164,6 +247,21 @@ const Page = () => {
         <textarea value={description} onChange={(e) => setDescription(e.target.value)} />
         <button onClick={uploadText}>Save Description</button>
         {description && <div>{description}</div>}
+      </div>
+       <div>
+        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
+        <button onClick={uploadName}>Save Name</button>
+      </div>
+      {name && <div>Name: {name}</div>}
+        <div>
+        <input type="text" value={role} onChange={(e) => setRole(e.target.value)} />
+        <button onClick={uploadRole}>Save Role</button>
+        {role && <div>Role: {role}</div>}
+      </div>
+       <div>
+        <textarea value={skills} onChange={(e) => setSkills(e.target.value)} />
+        <button onClick={uploadSkills}>Save Skills</button>
+        {skills && <div>{skills}</div>}
       </div>
     </div>
   );
