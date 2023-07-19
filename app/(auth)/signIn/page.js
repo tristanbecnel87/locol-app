@@ -7,6 +7,7 @@ import { Auth } from 'aws-amplify';
 import { Amplify } from 'aws-amplify';
 import config from 'app/aws-exports';
 import { useRouter } from 'next/navigation'
+import { useUserContext } from "@/components/Context";
 Amplify.configure(config);
 
 const formFields = {
@@ -81,6 +82,7 @@ const formFields = {
 
 export const UserProfile = () => {
   const router = useRouter()
+  const { user, setUser } = useUserContext();
 
   useEffect(() => {
 
@@ -89,7 +91,7 @@ export const UserProfile = () => {
         const currentUser = await Auth.currentAuthenticatedUser();
         const attributes = currentUser.attributes;
         console.log("User attributes:", attributes);
-        // setUser("currentUser");
+        // setUser(attributes);
 
         router.push('/dashboard')
 
