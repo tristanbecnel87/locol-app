@@ -9,7 +9,7 @@ import { withAuthenticator } from '@aws-amplify/ui-react';
 import { useUserContext } from '@/components/Context';
 Amplify.configure(config);
 
-const Page = ({ user }) => {
+const Page = (/* { user } */) => {
     const router = useRouter()
     const [imageUrl, setImageUrl] = useState();
     const [documentUrl, setDocumentUrl] = useState();
@@ -17,7 +17,7 @@ const Page = ({ user }) => {
     const [name, setName] = useState();
     const [role, setRole] = useState();
     const [skills, setSkills] = useState();
-    // const { user, setUser } = useUserContext();
+    const { user, setUser } = useUserContext();
 
 
     useEffect(() => {
@@ -27,7 +27,7 @@ const Page = ({ user }) => {
         
                 const imageUrl = await getImageUrl(user.attributes.sub, 'pfp');
                 // const document = await getDocumentUrl(currentUser.attributes.sub, 'portfolio');
-                // const description = await getDescription(currentUser.attributes.sub, 'description.txt');
+                const description = await getDescription(currentUser.attributes.sub, 'description.txt');
                 const name = await getName(user.attributes.sub, 'name.txt');
                 const role = await getRole(user.attributes.sub, 'role.txt');
                 const skills = await getSkills(user.attributes.sub, 'skills.txt');
@@ -133,7 +133,7 @@ const Page = ({ user }) => {
                         <Image className='w-32 h-32 rounded-full object-cover' src={imageUrl ? imageUrl : '/defaultProfilePic.svg'} alt="profilePhoto" width={150} height={150} />
                         <input type="file" onChange={(e) => uploadImage(e.target.files[0])} className='absolute z-10 inset-0 rounded w-36 opacity-0' />
                     </div>
-                    <div className="font-normal text-2xl">Shaz Momin</div>
+                    <div className="font-normal text-2xl">{"Shaz Momin"}</div>
                     <div>{user?.attributes["custom:university"]}</div>
                     <div className="italic">{"(" + user?.attributes["custom:classification"] + ")"}</div>
                 </div>
@@ -182,4 +182,4 @@ const Page = ({ user }) => {
     )
 }
 
-export default withAuthenticator(Page)
+export default Page

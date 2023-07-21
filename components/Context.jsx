@@ -19,7 +19,7 @@ export const UserContextProvider = ({ children }) => {
             try {
                 const currentUser = await Auth.currentAuthenticatedUser();
                 const attributes = currentUser.attributes;
-                setUser(attributes);
+                setUser(currentUser);
             } catch (error) {
                 console.log("error: " + error)
                 setUser(null)

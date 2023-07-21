@@ -9,7 +9,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="font-montserrat">
+      <body className="font-montserrat flex justify-center items-center my-[2em]">
         {children /* <Context>{children}</Context> */}
       </body>
     </html>
