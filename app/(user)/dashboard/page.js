@@ -1,10 +1,12 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Auth } from 'aws-amplify';
 import { useRouter } from 'next/navigation'
+import { useUserContext } from '@/components/Context';
 
 const Page = () => {
   const router = useRouter()
+  const { user, setUser } = useUserContext();
 
   const handleSignOut = async (e) => {
     try {
