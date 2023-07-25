@@ -52,7 +52,7 @@ const NavBar = () => {
                     <Link href="#/marketplace" className={navBtnStyles + " mr-16"}>
                         Marketplace
                     </Link>
-                    <Link href="#/board" className={disabled + " mr-16"} disabled>
+                    <Link href="#/board" className={navBtnStyles + " mr-16"}>
                         Board
                     </Link>
                     <Link href="#/community" className={disabled}>

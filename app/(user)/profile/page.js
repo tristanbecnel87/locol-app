@@ -16,7 +16,9 @@ const Page = (/* { user } */) => {
     const [description, setDescription] = useState();
     const [name, setName] = useState();
     const [role, setRole] = useState();
+    const [services, setServices] = useState();
     const [skills, setSkills] = useState();
+    const [interests, setInterests] = useState();
     const { user, setUser } = useUserContext();
 
 
@@ -27,7 +29,7 @@ const Page = (/* { user } */) => {
         
                 const imageUrl = await getImageUrl(user.attributes.sub, 'pfp');
                 // const document = await getDocumentUrl(currentUser.attributes.sub, 'portfolio');
-                const description = await getDescription(currentUser.attributes.sub, 'description.txt');
+                const description = await getDescription(user.attributes.sub, 'description.txt');
                 const name = await getName(user.attributes.sub, 'name.txt');
                 const role = await getRole(user.attributes.sub, 'role.txt');
                 const skills = await getSkills(user.attributes.sub, 'skills.txt');
@@ -154,7 +156,7 @@ const Page = (/* { user } */) => {
                     </nav>
                 </div>
 
-                <div className="my-6 mx-6 tracking-wide text-md">
+                <div className="tracking-wide text-md max-w-lg m-auto p-6 h-36">
                     <div id="tabs-with-underline-1" role="tabpanel" aria-labelledby="tabs-with-underline-item-1">
                         <p className="text-gray-500 dark:text-gray-400 text-center">
                             {description ? description : "Add your bio here!! You can edit this by clicking the edit button in the top right corner."}
@@ -162,19 +164,28 @@ const Page = (/* { user } */) => {
                     </div>
                     <div id="tabs-with-underline-2" className="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-2">
                         <p className="text-gray-500 dark:text-gray-400 text-center">
-                        This is the <em className="font-semibold text-gray-800 dark:text-gray-200">second</em> item's tab body.
+                            {services ? services : "You currently don't have any services listed. Create a service by heading over to the marketplace tab and clicking the 'Create Service' button!"}
                         </p>
                     </div>
                     <div id="tabs-with-underline-3" className="hidden" role="tabpanel" aria-labelledby="tabs-with-underline-item-3">
                         <p className="text-gray-500 dark:text-gray-400 text-center">
-                        This is the <em className="font-semibold text-gray-800 dark:text-gray-200">third</em> item's tab body.
+                            {interests ? interests : "You currently don't have any interests listed. Add an interest by clicking the edit button in the top right corner."}
                         </p>
                     </div>
                 </div>
             </div>
 
-            <div className="flex justify-center items-center py-6 bg-regalBlue-100">
+            <div className="flex flex-col justify-center items-center bg-regalBlue-100 p-6">
                 <div className="text-rawSienna-500 text-xl tracking-wider py-3 px-4 mx-4 inline-flex items-center gap-2 border-b-[3px] border-transparent whitespace-nowrap font-semibold" >Skills</div>
+                <div className="max-w-lg m-auto tracking-wide">
+                   { skills ? skills.split(' ').forEach(skill => {
+                        <div className="text-rawSienna-500 text-xl tracking-wider py-3 px-4 mx-4 inline-flex items-center gap-2 border-b-[3px] border-transparent whitespace-nowrap font-semibold" >{skill}</div>
+                    }) :
+                    <p className="text-gray-500 dark:text-gray-400 text-center pb-4">
+                        You currently don't have any skills listed. Add a skills by clicking edit profile in the top right corner.
+                    </p>} 
+                </div>
+                
             </div>
             
             Profile Page for {user?.attributes?.email}

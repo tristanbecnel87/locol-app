@@ -90,7 +90,7 @@ export const UserProfile = () => {
       try {
         const currentUser = await Auth.currentAuthenticatedUser();
         const attributes = currentUser.attributes;
-        console.log("User attributes:", attributes);
+        // console.log("User attributes:", attributes);
         // setUser(attributes);
 
         router.push('/dashboard')

@@ -13,7 +13,7 @@ export default async function RootLayout({ children }) {
     <html lang="en">
       <body className="font-montserrat">
         <UserContextProvider>
-          <header>
+          <header className='sticky top-0 z-30'>
             <NavBar />
           </header>
           <main>{children}</main>
