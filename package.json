@@ -26,6 +26,8 @@
     "aws-cdk-lib": "2.84.0",
     "constructs": "10.1.156",
     "encoding": "^0.1.13",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
     "sst": "^2.18.3"
   }
 }

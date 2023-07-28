@@ -1,10 +1,10 @@
-import '../globals.css'
+import "../globals.css";
 // import Context from '../../components/Context'
 
 export const metadata = {
-  title: 'Locol App',
-  description: 'Freelancing platform for students',
-}
+  title: "Locol App",
+  description: "Freelancing platform for students",
+};
 
 export default async function RootLayout({ children }) {
   return (
@@ -13,5 +13,5 @@ export default async function RootLayout({ children }) {
         {children /* <Context>{children}</Context> */}
       </body>
     </html>
-  )
+  );
 }
