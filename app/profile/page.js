@@ -21,6 +21,7 @@ const Page = () => {
   const [name, setName] = useState(''); //name or nickname
   const [role, setRole] = useState(''); //roles
   const [skills, setSkills] = useState(''); //skills
+  const [interests, setInterests] = useState(''); // interests
 
 
 
@@ -38,6 +39,8 @@ const Page = () => {
         const name = await getName(currentUser.attributes.sub, 'name.txt');
         const role = await getRole(currentUser.attributes.sub, 'role.txt');
         const skills = await getSkills(currentUser.attributes.sub, 'skills.txt');
+        const interests = await getInterests(currentUser.attributes.sub, 'interests.txt');
+
 
 
         setImageUrl(imageUrl);
@@ -46,6 +49,7 @@ const Page = () => {
         setName(name);
         setRole(role);
         setSkills(skills);
+        setInterests(interests);
       } catch (error) {
         console.error('Failed to fetch user attributes.', error);
         router.push('/auth/signIn');
@@ -83,6 +87,17 @@ const Page = () => {
       return text;
     } catch (error) {
       console.error('Error retrieving profile description:', error);
+      throw error;
+    }
+  };
+  const getInterests = async (userId, fileName) => {
+    try {
+      const interests = await Storage.get(`${userId}/${fileName}`);
+      const response = await fetch(interests);
+      const text = await response.text();
+      return text;
+    } catch (error) {
+      console.error('Error retrieving profile interests:', error);
       throw error;
     }
   };
@@ -204,6 +219,18 @@ const Page = () => {
       console.error('Error uploading skills:', error);
     }
   };
+    const uploadInterests = async () => {
+    try {
+      const currentUser = await Auth.currentAuthenticatedUser();
+      const userId = currentUser.attributes.sub;
+      const result = await Storage.put(`${userId}/interests.txt`, interests, {
+        contentType: 'text/plain',
+      });
+      console.log('Interests uploaded successfully:', result);
+    } catch (error) {
+      console.error('Error uploading interests:', error);
+    }
+  };
 
   const previewDocument = () => { //this code needs work
     if (isDocumentLoaded) {
@@ -262,6 +289,11 @@ const Page = () => {
         <textarea value={skills} onChange={(e) => setSkills(e.target.value)} />
         <button onClick={uploadSkills}>Save Skills</button>
         {skills && <div>{skills}</div>}
+      </div>
+       <div>
+        <textarea value={interests} onChange={(e) => setInterests(e.target.value)} />
+        <button onClick={uploadInterests}>Save Interests</button>
+        {interests && <div>{interests}</div>}
       </div>
     </div>
   );
