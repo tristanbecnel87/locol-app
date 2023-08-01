@@ -7,6 +7,7 @@ const Page = () => {
   const [price, setPrice] = useState('');
   const [deliveryTime, setDeliveryTime] = useState('');
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [headline, setHeadline] = useState('');
 
   const services = [
     { name: 'Social Media Marketing', value: 'social-media-marketing' },
@@ -32,17 +33,24 @@ const Page = () => {
     setDeliveryTime(event.target.value);
   };
 
+  const handleHeadlineChange = (event) => {
+    setHeadline(event.target.value);
+  };
+
+
   const handleServiceUpload = () => {
     // Perform actions to upload the service details, e.g., save to backend
     console.log('Selected Service:', selectedService);
     console.log('Price:', price);
     console.log('Delivery Time:', deliveryTime);
+    console.log('Headline:', headline)
 
     // Prepare the data to be uploaded
     const serviceData = {
       serviceName: selectedService,
       price: price,
       deliveryTime: deliveryTime,
+      headline: headline,
     };
 
     uploadService(serviceData);
@@ -51,6 +59,7 @@ const Page = () => {
     setSelectedService('');
     setPrice('');
     setDeliveryTime('');
+    setHeadline('');
 
     // Close the modal
     setIsModalOpen(false);
@@ -74,6 +83,7 @@ const Page = () => {
         deliveryTime: serviceData.deliveryTime,
         price: serviceData.price,
         serviceName: serviceData.serviceName,
+        headline: serviceData.headline,
       };
 
       // Convert the data to a JSON string
@@ -123,6 +133,10 @@ const Page = () => {
             <div>
               <label htmlFor="deliveryTime">Delivery Time (weeks):</label>
               <input type="number" id="deliveryTime" value={deliveryTime} onChange={handleDeliveryTimeChange} />
+            </div>
+             <div>
+              <label htmlFor="headline">Headline:</label>
+              <input type="text" id="headline" value={headline} onChange={handleHeadlineChange} />
             </div>
             <button onClick={handleServiceUpload}>Upload Service</button>
             <button onClick={closeModal}>Close</button>

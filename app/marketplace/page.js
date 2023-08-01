@@ -29,10 +29,12 @@ const Page = () => {
             const deliveryTime = serviceData.deliveryTime;
             const price = serviceData.price;
             const serviceName = serviceData.serviceName;
+            const headline = serviceData.headline;
 
             console.log('Delivery Time:', deliveryTime);
             console.log('Price:', price);
             console.log('Service Name:', serviceName);
+            console.log('Headline', headline);
 
             return serviceData;
           } catch (error) {
@@ -60,6 +62,7 @@ const Page = () => {
             <h3>Service: {service.serviceName}</h3>
             <p>Price: ${service.price}</p>
             <p>Delivery Time: {service.deliveryTime} weeks</p>
+            <p>Headline: {service.headline}</p>
           </div>
         ))}
       </div>
