@@ -10,6 +10,12 @@ const Page = () => {
 
   const services = [
     { name: 'Social Media Marketing', value: 'social-media-marketing' },
+    { name: 'Search Engine Optimization', value: 'search-engine-optimization' },
+    { name: 'Email Marketing', value: 'email-marketing' },
+    { name: 'Copywriting', value: 'copywriting' },
+    { name: 'Marketing Strategy', value: 'marketing-strategy' },
+    { name: 'Video Marketing', value: 'video-marketing' },
+    { name: 'Web Analytics', value: 'web-analytics' },
     { name: 'Graphic Design', value: 'graphic-design' },
     { name: 'Web Development', value: 'web-development' },
   ];
