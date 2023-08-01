@@ -7,6 +7,7 @@ Amplify.configure(config);
 
 const Page = () => {
   const [services, setServices] = useState([]);
+  const [selectedService, setSelectedService] = useState('');
 
   useEffect(() => {
     const fetchServices = async () => {
@@ -53,11 +54,35 @@ const Page = () => {
     fetchServices();
   }, []);
 
-  return (
+   // Function to handle service selection from the dropdown menu
+  const handleServiceSelection = (event) => {
+    setSelectedService(event.target.value);
+  };
+
+  // Function to filter services based on the selected service
+  const filteredServices = services.filter((service) => {
+    return selectedService === '' || service.serviceName === selectedService;
+  });
+
+
+ return (
     <div>
       <h2>Marketplace</h2>
+      {/* Add the button and dropdown menu */}
       <div>
-        {services.map((service, index) => (
+        <label htmlFor="filter">Filter by Service:</label>
+        <select id="filter" value={selectedService} onChange={handleServiceSelection}>
+          <option value="">All Services</option>
+          {services.map((service) => (
+            <option key={service.serviceName} value={service.serviceName}>
+              {service.serviceName}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      <div>
+        {filteredServices.map((service, index) => (
           <div key={index}>
             <h3>Service: {service.serviceName}</h3>
             <p>Price: ${service.price}</p>
