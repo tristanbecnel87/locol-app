@@ -1,6 +1,7 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { Storage } from "aws-amplify";
 import { Amplify } from "aws-amplify";
 import config from "app/aws-exports";
@@ -11,7 +12,9 @@ Amplify.configure(config);
 
 const Page = (/* { user } */) => {
   const router = useRouter();
+  const pdfViewerRef = useRef();
   const [imageUrl, setImageUrl] = useState();
+  const [fileData, setFileData] = useState();
   const [documentUrl, setDocumentUrl] = useState();
   const [description, setDescription] = useState();
   const [name, setName] = useState();
@@ -27,7 +30,10 @@ const Page = (/* { user } */) => {
         const attributes = user.attributes;
 
         const imageUrl = await getImageUrl(user.attributes.sub, "pfp");
-        // const document = await getDocumentUrl(currentUser.attributes.sub, 'portfolio');
+        const document = await getDocumentUrl(
+          currentUser.attributes.sub,
+          "portfolio",
+        );
         const description = await getDescription(
           user.attributes.sub,
           "description.txt",
@@ -37,8 +43,8 @@ const Page = (/* { user } */) => {
         const skills = await getSkills(user.attributes.sub, "skills.txt");
 
         setImageUrl(imageUrl);
-        // setDocumentUrl(document);
-        // setDescription(description);
+        setDocumentUrl(document);
+        setDescription(description);
         setName(name);
         setRole(role);
         setSkills(skills);
@@ -68,6 +74,25 @@ const Page = (/* { user } */) => {
     }
   };
 
+  // Upload document to S3 bucket
+  const uploadDocument = async () => {
+    try {
+      const userId = user.attributes.sub;
+
+      const result = await Storage.put(`${userId}/portfolio.pdf`, fileData, {
+        contentType: fileData.type,
+      });
+      // setFileStatus(true);
+      console.log("Portfolio uploaded successfully:", result);
+
+      const updatedDocumentUrl = await getDocumentUrl(userId, "portfolio.pdf");
+      setDocumentUrl(updatedDocumentUrl);
+    } catch (error) {
+      console.error("Portfolio uploading document:", error);
+    }
+  };
+
+  // Gets description from S3 bucket
   const getDescription = async (userId, fileName) => {
     try {
       const descriptionUrl = await Storage.get(`${userId}/${fileName}`);
@@ -112,6 +137,17 @@ const Page = (/* { user } */) => {
       return text;
     } catch (error) {
       console.error("Error retrieving skills:", error);
+      throw error;
+    }
+  };
+
+  // Get document URL from S3 bucket
+  const getDocumentUrl = async (userId, fileName) => {
+    try {
+      const documentUrl = await Storage.get(`${userId}/${fileName}`);
+      return documentUrl;
+    } catch (error) {
+      console.error("Error retrieving portfolio:", error);
       throw error;
     }
   };
@@ -231,7 +267,7 @@ const Page = (/* { user } */) => {
         </div>
       </div>
       <div className="flex flex-col justify-center items-center bg-regalBlue-100 p-6">
-        <div className="text-rawSienna-500 text-xl tracking-wider py-3 px-4 mx-4 inline-flex items-center gap-2 border-b-[3px] border-transparent whitespace-nowrap font-semibold">
+        <div className="text-rawSienna-500 text-xl tracking-wider py-3 px-4 mx-4 inline-flex items-center gap-2 border-b-[3px] border-transparent uppercase whitespace-nowrap font-semibold">
           Skills
         </div>
         <div className="max-w-lg m-auto tracking-wide">
@@ -249,7 +285,37 @@ const Page = (/* { user } */) => {
           )}
         </div>
       </div>
-      Profile Page for {user?.attributes?.email}
+      <div className="flex flex-col justify-center items-center p-6">
+        <div className="text-rawSienna-500 text-xl tracking-wider py-3 px-4 mx-4 inline-flex items-center gap-2 border-b-[3px] border-transparent uppercase whitespace-nowrap font-semibold">
+          Connect
+        </div>
+        <div className="max-w-lg m-auto tracking-wide">
+          <div>
+            <input
+              type="file"
+              onChange={(e) => setFileData(e.target.files[0])}
+            />
+          </div>
+          <button
+            className="flex flex-row justify-center items-center gap-4"
+            onClick={uploadDocument}
+          >
+            Upload Resume
+          </button>
+          <div className="flex flex-row justify-center items-center gap-4">
+            <Link href="https://www.linkedin.com/in/shaz-momin-1b1b3b1b1/">
+              <Image
+                src="https://img.icons8.com/color/48/000000/linkedin.png"
+                className="h-12 w-12"
+                width={48}
+                height={48}
+              />
+            </Link>
+            {documentUrl && <Link href={documentUrl}>Download Portfolio</Link>}
+          </div>
+        </div>
+      </div>
+      <div>Profile Page for {user?.attributes?.email}</div>
     </div>
   );
 };
