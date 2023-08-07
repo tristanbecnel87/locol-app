@@ -38,13 +38,21 @@ const formFields = {
       placeholder: "Type Yes or No",
       order: 5,
     },
+    "custom:fullname": {
+      key: "fullname",
+      type: "string",
+      required: true,
+      label: "Enter your Full Name",
+      placeholder: "Type Here",
+      order: 6,
+    },
     "custom:university": {
       key: "university",
       type: "string",
       required: true,
       label: "What university do you attend? ",
       placeholder: "Type Here",
-      order: 6,
+      order: 7,
     },
     "custom:study": {
       key: "study",
@@ -52,7 +60,7 @@ const formFields = {
       required: true,
       label: "What do you study? ",
       placeholder: "Type Here",
-      order: 7,
+      order: 8,
     },
     "custom:classification": {
       key: "classification",
@@ -60,7 +68,7 @@ const formFields = {
       required: true,
       label: "What is your classification? ",
       placeholder: "Type Here",
-      order: 8,
+      order: 9,
     },
     "custom:graduate": {
       key: "graduate",
@@ -68,7 +76,7 @@ const formFields = {
       required: true,
       label: "When do you graduate? ",
       placeholder: "Type Here",
-      order: 9,
+      order: 10,
     },
     "custom:skills": {
       key: "skills",
@@ -76,7 +84,7 @@ const formFields = {
       required: true,
       label: "List your skills",
       placeholder: "Proficient in C++, Graphic Design, Web Analytics, Etc.",
-      order: 10,
+      order: 11,
     },
   },
 };

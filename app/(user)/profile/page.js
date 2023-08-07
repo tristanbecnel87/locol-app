@@ -17,7 +17,6 @@ const Page = (/* { user } */) => {
   const [fileData, setFileData] = useState();
   const [documentUrl, setDocumentUrl] = useState();
   const [description, setDescription] = useState();
-  const [name, setName] = useState();
   const [role, setRole] = useState();
   const [services, setServices] = useState();
   const [skills, setSkills] = useState();
@@ -30,22 +29,17 @@ const Page = (/* { user } */) => {
         const attributes = user.attributes;
 
         const imageUrl = await getImageUrl(user.attributes.sub, "pfp");
-        const document = await getDocumentUrl(
-          currentUser.attributes.sub,
-          "portfolio",
-        );
+        const document = await getDocumentUrl(user.attributes.sub, "portfolio");
         const description = await getDescription(
           user.attributes.sub,
           "description.txt",
         );
-        const name = await getName(user.attributes.sub, "name.txt");
         const role = await getRole(user.attributes.sub, "role.txt");
         const skills = await getSkills(user.attributes.sub, "skills.txt");
 
         setImageUrl(imageUrl);
         setDocumentUrl(document);
         setDescription(description);
-        setName(name);
         setRole(role);
         setSkills(skills);
       } catch (error) {
@@ -98,21 +92,12 @@ const Page = (/* { user } */) => {
       const descriptionUrl = await Storage.get(`${userId}/${fileName}`);
       const response = await fetch(descriptionUrl);
       const text = await response.text();
+
+      if (text.includes("NoSuchKey")) return null;
+
       return text;
     } catch (error) {
       console.error("Error retrieving profile description:", error);
-      throw error;
-    }
-  };
-
-  const getName = async (userId, fileName) => {
-    try {
-      const nameUrl = await Storage.get(`${userId}/${fileName}`);
-      const response = await fetch(nameUrl);
-      const text = await response.text();
-      return text;
-    } catch (error) {
-      console.error("Error retrieving name:", error);
       throw error;
     }
   };
@@ -181,7 +166,9 @@ const Page = (/* { user } */) => {
               className="absolute z-10 inset-0 rounded w-36 opacity-0"
             />
           </div>
-          <div className="font-normal text-2xl">{"Shaz Momin"}</div>
+          <div className="font-normal text-2xl">
+            {user?.attributes["custom:fullname"]}
+          </div>
           <div>{user?.attributes["custom:university"]}</div>
           <div className="italic">
             {"(" + user?.attributes["custom:classification"] + ")"}
@@ -303,15 +290,17 @@ const Page = (/* { user } */) => {
             Upload Resume
           </button>
           <div className="flex flex-row justify-center items-center gap-4">
-            <Link href="https://www.linkedin.com/in/shaz-momin-1b1b3b1b1/">
-              <Image
-                src="https://img.icons8.com/color/48/000000/linkedin.png"
-                className="h-12 w-12"
-                width={48}
-                height={48}
-              />
-            </Link>
-            {documentUrl && <Link href={documentUrl}>Download Portfolio</Link>}
+            {documentUrl && (
+              <Link href={documentUrl}>
+                <Image
+                  src="https://img.icons8.com/ios-filled/50/000000/resume.png"
+                  className="h-12 w-12"
+                  alt="portfolio"
+                  width={48}
+                  height={48}
+                />
+              </Link>
+            )}
           </div>
         </div>
       </div>
