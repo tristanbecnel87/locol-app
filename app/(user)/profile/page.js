@@ -8,13 +8,13 @@ import config from "app/aws-exports";
 import { useRouter } from "next/navigation";
 import { withAuthenticator } from "@aws-amplify/ui-react";
 import { useUserContext } from "@/components/Context";
+import EditProfileModal from "@/components/EditProfileModal";
 Amplify.configure(config);
 
 const Page = (/* { user } */) => {
   const router = useRouter();
   const pdfViewerRef = useRef();
   const [imageUrl, setImageUrl] = useState();
-  const [fileData, setFileData] = useState();
   const [documentUrl, setDocumentUrl] = useState();
   const [description, setDescription] = useState();
   const [role, setRole] = useState();
@@ -50,41 +50,6 @@ const Page = (/* { user } */) => {
 
     fetchUserAttributes();
   }, []);
-
-  // Upload image to S3 bucket
-  const uploadImage = async (file) => {
-    try {
-      const userId = user.attributes.sub;
-      const result = await Storage.put(`${userId}/pfp`, file, {
-        contentType: file.type,
-      });
-      // setFileStatus(true);
-      // console.log('File uploaded successfully:', result);
-
-      const updatedImageUrl = await getImageUrl(userId, "pfp");
-      setImageUrl(updatedImageUrl);
-    } catch (error) {
-      console.error("Error uploading file:", error);
-    }
-  };
-
-  // Upload document to S3 bucket
-  const uploadDocument = async () => {
-    try {
-      const userId = user.attributes.sub;
-
-      const result = await Storage.put(`${userId}/portfolio.pdf`, fileData, {
-        contentType: fileData.type,
-      });
-      // setFileStatus(true);
-      console.log("Portfolio uploaded successfully:", result);
-
-      const updatedDocumentUrl = await getDocumentUrl(userId, "portfolio.pdf");
-      setDocumentUrl(updatedDocumentUrl);
-    } catch (error) {
-      console.error("Portfolio uploading document:", error);
-    }
-  };
 
   // Gets description from S3 bucket
   const getDescription = async (userId, fileName) => {
@@ -151,6 +116,16 @@ const Page = (/* { user } */) => {
   return (
     <div className="font-montserrat">
       <div className="h-96 bg-rawSienna-400 flex items-center justify-center text-md shadow-inner-lg">
+        <div className="absolute top-36 right-10">
+          <button
+            type="button"
+            className="flex bg-transparent tracking-wide hover:bg-regalBlue-800 text-white font-lg hover:text-white py-2 px-4 border border-white hover:border-transparent rounded"
+            data-hs-overlay="#hs-vertically-centered-modal"
+          >
+            Edit Profile
+          </button>
+        </div>
+        <EditProfileModal />
         <div className="flex flex-col items-center justify-center text-white tracking-wider font-light">
           <div className="m-4 hover:opacity-50 cursor-pointer relative">
             <Image
@@ -283,12 +258,12 @@ const Page = (/* { user } */) => {
               onChange={(e) => setFileData(e.target.files[0])}
             />
           </div>
-          <button
+          {/* <button
             className="flex flex-row justify-center items-center gap-4"
             onClick={uploadDocument}
           >
             Upload Resume
-          </button>
+          </button> */}
           <div className="flex flex-row justify-center items-center gap-4">
             {documentUrl && (
               <Link href={documentUrl}>
