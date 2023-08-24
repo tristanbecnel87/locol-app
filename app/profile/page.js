@@ -34,7 +34,7 @@ const Page = () => {
         setUser(currentUser);
 
         const imageUrl = await getImageUrl(currentUser.attributes.sub, 'pfp');
-        const document = await getDocumentUrl(currentUser.attributes.sub, 'portfolio');
+        const document = await getDocumentUrls(currentUser.attributes.sub); //'portfolio'
         const description = await getDescription(currentUser.attributes.sub, 'description.txt');
         const name = await getName(currentUser.attributes.sub, 'name.txt');
         const role = await getRole(currentUser.attributes.sub, 'role.txt');
@@ -69,15 +69,17 @@ const Page = () => {
     }
   };
 
-  const getDocumentUrl = async (userId, fileName) => {
-    try {
-      const documentUrl = await Storage.get(`${userId}/${fileName}`);
-      return documentUrl;
-    } catch (error) {
-      console.error('Error retrieving portfolio:', error);
-      throw error;
-    }
-  };
+const getDocumentUrls = async (userId) => {
+  try {
+    const documentList = await Storage.list(userId + '/portfolio', { level: 'public' });
+    console.log(documentList);
+    return documentList;
+  } catch (error) {
+    console.error('Error fetching document URLs:', error);
+    return [];
+  }
+};
+
 
   const getDescription = async (userId, fileName) => {
     try {
@@ -153,23 +155,35 @@ const Page = () => {
     }
   };
 
-  const uploadDocument = async () => {
-    try {
-      const currentUser = await Auth.currentAuthenticatedUser();
-      const userId = currentUser.attributes.sub;
+const uploadDocument = async () => {
+  try {
+    const currentUser = await Auth.currentAuthenticatedUser();
+    const userId = currentUser.attributes.sub;
 
-      const result = await Storage.put(`${userId}/portfolio.pdf`, fileData, {
-        contentType: fileData.type,
-      });
-      setFileStatus(true);
-      console.log('Portfolio uploaded successfully:', result);
-
-      const updatedDocumentUrl = await getDocumentUrl(userId, 'portfolio.pdf');
-      setDocumentUrl(updatedDocumentUrl);
-    } catch (error) {
-      console.error('Portfolio uploading document:', error);
+    // Get existing document URLs
+    const documentUrl = await getDocumentUrls(userId);
+  console.log(documentUrl);
+    // Determine the new document name based on the existing documents
+    let newDocumentName = 'portfolio1.pdf';
+    if (documentUrl.results.length==1) {
+      newDocumentName = 'portfolio2.pdf';
+    } else if (documentUrl.results.length==2) {
+      newDocumentName = 'portfolio3.pdf';
     }
-  };
+
+    const result = await Storage.put(`${userId}/${newDocumentName}`, fileData, {
+      contentType: fileData.type,
+    });
+    setFileStatus(true);
+    console.log('Portfolio uploaded successfully:', result);
+
+    const updatedDocumentUrl = await getDocumentUrls(userId, newDocumentName);
+    setDocumentUrl(updatedDocumentUrl);
+  } catch (error) {
+    console.error('Portfolio uploading document:', error);
+  }
+};
+
 
   const uploadText = async () => {
     try {
