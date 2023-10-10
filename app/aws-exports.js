@@ -3,6 +3,7 @@
 
 const awsmobile = {
     "aws_project_region": "us-east-1",
+     "aws_cognito_region": "us-east-1", // Replace with your AWS region
     "aws_cognito_identity_pool_id": "us-east-1:803444e8-db4a-4fb8-9840-28614c64ff60",
     "aws_user_pools_id": "us-east-1_Gb2aVLndJ",
     "aws_user_pools_web_client_id": "1n6ttn5ou00ok1fqdp7bgi95tq",
@@ -25,7 +26,7 @@ const awsmobile = {
     "aws_cognito_verification_mechanisms": [
         "EMAIL"
     ],
-    "aws_user_files_s3_bucket": "mybucket145142-staging",
+    "aws_user_files_s3_bucket": "mybucket03512-main",
     "aws_user_files_s3_bucket_region": "us-east-1",
     "aws_appsync_graphqlEndpoint": "https://4yzsahh25vh7xd7tojj64np27u.appsync-api.us-east-1.amazonaws.com/graphql",
     "aws_appsync_region": "us-east-1",
