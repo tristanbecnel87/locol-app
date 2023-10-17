@@ -23,6 +23,7 @@
     "tailwindcss": "3.3.2"
   },
   "devDependencies": {
+    "@tailwindcss/forms": "^0.5.6",
     "aws-cdk-lib": "2.84.0",
     "constructs": "10.1.156",
     "encoding": "^0.1.13",

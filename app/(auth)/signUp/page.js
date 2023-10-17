@@ -111,7 +111,7 @@ export const UserProfile = () => {
   }, []);
 };
 
-const Login = () => {
+const SignUp = () => {
   return (
     <Authenticator formFields={formFields}>
       <UserProfile /> {/* Render UserProfile component */}
@@ -119,4 +119,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default SignUp;
