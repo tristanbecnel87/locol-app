@@ -60,7 +60,7 @@ const Login = () => {
           <div className="px-4">
             <div className=" cursor-pointer h-4 w-4 hover:scale-125 transition" onClick={handleBackArrow}>
               <svg width="19" height="14" viewBox="0 0 19 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path id="Back-Arrow" d="M7.07 1L1 7.07L7.07 13.14M18 7.07H1.17" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                <path id="Back-Arrow" d="M7.07 1L1 7.07L7.07 13.14M18 7.07H1.17" stroke="black" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
               </svg>
             </div>
           </div>
@@ -68,10 +68,10 @@ const Login = () => {
             <h1 className=" text-4xl text-sky-900 font-bold">Sign in</h1>
           </div>
         </div>
-        <div class="flex items-center justify-center">
+        <div className="flex items-center justify-center">
           <div className="px-4 scale-125">
             <svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 17 17" fill="none">
-              <g clip-path="url(#clip0_810_10963)">
+              <g clipPath="url(#clip0_810_10963)">
                 <path d="M11.1272 3.11598C11.1272 1.43995 9.76851 0.0812988 8.09249 0.0812988C6.41646 0.0812988 5.0578 1.43995 5.0578 3.11598C5.0578 4.79201 6.41646 6.15066 8.09249 6.15066C9.76851 6.15066 11.1272 4.79201 11.1272 3.11598ZM7.38408 7.70278C5.50858 6.55466 2.47074 6.23917 0.942016 6.15224C0.428333 6.12316 0 6.51451 0 7.00859V14.0516C0 14.5046 0.366375 14.8823 0.837383 14.9067C2.21753 14.9791 5.00975 15.2443 6.93962 16.2163C7.23582 16.3655 7.58702 16.1623 7.58702 15.8411V8.06504C7.5867 7.91742 7.51368 7.78212 7.38408 7.70278ZM15.243 6.15224C13.7146 6.23886 10.6764 6.55466 8.80121 7.70278C8.6716 7.78212 8.59858 7.92279 8.59858 8.07042V15.8401C8.59858 16.1623 8.95073 16.3658 9.24788 16.2163C11.1774 15.2452 13.9681 14.98 15.3479 14.9076C15.8189 14.883 16.1853 14.5052 16.1853 14.0522V7.00859C16.185 6.51451 15.7566 6.12316 15.243 6.15224Z" fill="#00416B"/>
               </g>
               <defs>
@@ -94,18 +94,18 @@ const Login = () => {
           </div>
         </div>
         <div className="mb-4 mx-20">
-          <label for="input-label" class="block text-sm font-semibold mb-2 text-black dark:text-white">Email:</label>
+          <label className="block text-sm font-semibold mb-2 text-black dark:text-white">Email:</label>
           <input type="email" class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
             value={email} onChange={(e) => setEmail(e.target.value)} 
           />
         </div>
         <div className="mb-6 mx-20">
-          <label for="input-label" class="block text-sm font-semibold mb-2 text-black dark:text-white">Password:</label>
+          <label className="block text-sm font-semibold mb-2 text-black dark:text-white">Password:</label>
           <input type={showPassword ? "text" : "password"} class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
             value={password} onChange={(e) => setPassword(e.target.value)} 
           />
         </div>
-        <div className="text-center">
+        <div className=" flex flex-col justify-center items-center">
           <button
             className="bg-sky-900 text-white rounded-full py-2 px-4 hover:bg-sky-700 transition duration-300"
             onClick={handleSignIn}
