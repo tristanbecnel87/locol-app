@@ -9,6 +9,7 @@ import config from "app/aws-exports";
 import { useRouter } from "next/navigation";
 import { useUserContext } from "@/components/Context";
 import { Router } from "next/router";
+import Link from "next/link";
 Amplify.configure(config);
 
 
@@ -44,9 +45,14 @@ const Login = () => {
     }
   }
 
+  const handleForgotPassword = () => {
+    // TODO: Implement forgot password
+    console.log("Forgot Password Clicked");
+  }
+
   return (
-    <div className="flex h-screen w-screen justify-center items-center m-0 p-0 bg-orange-100">
-      <div className="w-[800px] h-[500px] min-h-min min-w-min bg-stone-50 p-6 rounded-3xl shadow-lg flex flex-col justify-evenly">
+    <div className="flex h-screen w-screen justify-center items-center m-0 p-0 bg-gradient-to-tr from-blue-100 via-orange-100 to-orange-200">
+      <div className="w-[800px] h-[500px] min-h-min min-w-min bg-stone-50 p-6 rounded-3xl shadow-lg flex flex-col justify-evenly ">
         <div>
           <div className="text-center">
             <h1 className=" text-xl text-sky-900 font-bold">Welcome back!</h1>
@@ -89,15 +95,13 @@ const Login = () => {
         </div>
         <div className="mb-4 mx-20">
           <label for="input-label" class="block text-sm font-semibold mb-2 text-black dark:text-white">Email:</label>
-          <input type="email" id="input-label" class="py-3 px-4 block w-full border-gray-500  ring-neutral-500 rounded-full 
-            text-sm shadow-lg" 
+          <input type="email" class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
             value={email} onChange={(e) => setEmail(e.target.value)} 
           />
         </div>
         <div className="mb-6 mx-20">
           <label for="input-label" class="block text-sm font-semibold mb-2 text-black dark:text-white">Password:</label>
-          <input type={showPassword ? "text" : "password"} id="input-label" class="py-3 px-4 block w-full border-gray-200 rounded-full 
-            text-sm ring-blue-500 dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 shadow-lg" 
+          <input type={showPassword ? "text" : "password"} class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
             value={password} onChange={(e) => setPassword(e.target.value)} 
           />
         </div>
@@ -106,8 +110,10 @@ const Login = () => {
             className="bg-sky-900 text-white rounded-full py-2 px-4 hover:bg-sky-700 transition duration-300"
             onClick={handleSignIn}
           >
-            <p className=" mx-8 font-semibold">Login</p>
+            <h2 className=" mx-8 font-semibold">Login</h2>
           </button>
+          <p className="pt-4">Don't have an account? <Link className=" text-blue-700"  href="/signUp">Sign up</Link> instead.</p>
+          <div className=" text-blue-700 cursor-pointer" onClick={handleForgotPassword}>Forgot password?</div>
         </div>
       </div>
     </div>
