@@ -38,7 +38,7 @@ const SignUp = () => {
     }else if(screen === "PG_STUDENT_CREATEACCOUNT") {
       return <CreateStudentAccount setScreen={setScreen}/>
     }else {
-      return <div>shouldn't happen</div>
+      return <div>Error</div>
     }
   }
 

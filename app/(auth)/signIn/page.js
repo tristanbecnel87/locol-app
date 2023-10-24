@@ -1,14 +1,11 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import { Authenticator, useAuthenticator, View } from "@aws-amplify/ui-react";
 import "@aws-amplify/ui-react/styles.css";
 
 import { Auth } from "aws-amplify";
 import { Amplify } from "aws-amplify";
 import config from "app/aws-exports";
 import { useRouter } from "next/navigation";
-import { useUserContext } from "@/components/Context";
-import { Router } from "next/router";
 import Link from "next/link";
 Amplify.configure(config);
 
