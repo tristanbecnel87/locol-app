@@ -53,7 +53,7 @@ const SignUp = () => {
     } else if(screen === "PG_BUSINESS_BASICINFO") {
       return <BasicInfo setScreen={setScreen} setForm={setBusinessForm} form={businessForm}/>
     } else if(screen === "PG_BUSINESS_SERVICES") {
-      return <Services setScreen={setScreen}/>
+      return <Services setScreen={setScreen} setForm={setBusinessForm} form={businessForm}/>
     }else if(screen === "PG_BUSINESS_CREATEACCOUNT") {
       return <CreateBusinessAccount setScreen={setScreen}/>
     }else if(screen === "PG_STUDENT_EDUCATION") {

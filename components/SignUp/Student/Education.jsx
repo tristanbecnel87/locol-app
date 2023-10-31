@@ -2,11 +2,16 @@
 import React, {useState } from "react";
 import { useRouter } from "next/navigation";
 
+import InputPill from "@/components/InputPill";
 import Link from "next/link";
 
 const Education = ({setScreen}) => {
   const router = useRouter();
 
+  const [university, setUniversity] = useState("");
+  const [major, setMajor] = useState("");
+  const [classification, setClassification] = useState("");
+  const [graduationDate, setGraduationDate] = useState("");
 
   return (
     <div className="w-[800px] min-h-min min-w-min bg-stone-50 p-6 rounded-3xl shadow-lg flex flex-col justify-evenly ">
@@ -28,6 +33,12 @@ const Education = ({setScreen}) => {
                     </svg>
                 </div>
             </div>
+        </div>
+        <div className="px-32 py-4 w-full flex flex-col justify-start">
+            <InputPill title="What university do you attend?" placeholder="Type here..." setState={setUniversity} inputType="text"/>
+            <InputPill title="What do you study?" placeholder="Type here..." setState={setMajor} inputType="text"/>
+            <InputPill title="What is your classification?" placeholder="Freshman, Sophomore, Junior, or Senior" setState={setClassification} inputType="text"/>
+            <InputPill title="When do you graduate?" placeholder="mm-yyyy" setState={setGraduationDate} inputType="text"/>
         </div>
     </div>
   );

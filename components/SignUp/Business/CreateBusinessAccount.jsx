@@ -34,7 +34,7 @@ const CreateBusinessAccount = ({setScreen, handleCreateAccount}) => {
                 <input type="email" class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
                     onChange={(e) => setEmail(e.target.value)}  
                 />
-                <h3 className=" text-gray-500 text-xs pl-5 pt-2">*Must be current business email*</h3>
+                <h3 className=" text-gray-500 text-xs pl-5 pt-2">*Must be current business email</h3>
             </div>
             <InputPill title="Password" placeholder="" setState={setPassword} inputType="password" />
             <InputPill title="Confirm Password" placeholder="" setState={setConfirmPassword} inputType="password" />

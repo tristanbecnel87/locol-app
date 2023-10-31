@@ -24,7 +24,7 @@ const CreateStudentAccount = ({setScreen, handleCreateAccount}) => {
                 </div>
             </div>
             <div className="text-center font-bold">
-                <h1 className=" text-4xl text-neutral-800 font-bold">Create your business account</h1>
+                <h1 className=" text-4xl text-neutral-800 font-bold">Create your student account</h1>
             </div>
             <div className="px-4" />
         </div>
@@ -34,7 +34,7 @@ const CreateStudentAccount = ({setScreen, handleCreateAccount}) => {
                 <input type="email" class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
                     onChange={(e) => setEmail(e.target.value)}  
                 />
-                <h3 className=" text-gray-500 text-xs pl-5 pt-2">*Must be current business email*</h3>
+                <h3 className=" text-gray-500 text-xs pl-5 pt-2">*Must be current school email ending with ".edu"</h3>
             </div>
             <InputPill title="Password" placeholder="" setState={setPassword} inputType="password" />
             <InputPill title="Confirm Password" placeholder="" setState={setConfirmPassword} inputType="password" />
@@ -42,7 +42,7 @@ const CreateStudentAccount = ({setScreen, handleCreateAccount}) => {
         
         <div className=" flex pt-8 flex-col justify-center items-center">
             <button
-                className="bg-sky-900 text-white rounded-full py-2 px-4 hover:bg-sky-700 transition duration-300"
+                className="bg-rawSienna-500 text-white rounded-full py-2 px-4 hover:bg-sky-700 transition duration-300"
                 onClick={handleCreateAccount}
             >
                 <h2 className=" mx-8 font-semibold">Create Account</h2>

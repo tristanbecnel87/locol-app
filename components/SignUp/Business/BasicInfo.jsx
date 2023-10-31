@@ -51,7 +51,7 @@ const BasicInfo = ({setScreen, setForm, form}) => {
                 </div>
             </div>
         </div>
-        <div className="px-32 pt-4 w-full flex flex-col justify-start">
+        <div className="px-32 py-4 w-full flex flex-col justify-start">
             <InputPill title="Where is your office located?" placeholder="City, State" setState={setOfficeLocation} inputType="text"/>
             <InputPill title="What industry are you part of?" placeholder="Manufacturing, Software Development, etc." setState={setIndustry} inputType="text" />
             <InputPill title="When was the company founded?" placeholder="mm-dd-yyyy" setState={setCompanyFounded} inputType="text" />

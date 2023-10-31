@@ -1,11 +1,52 @@
 "use client";
 import React, {useState } from "react";
-import { useRouter } from "next/navigation";
+import CheckboxList from "@/components/CheckboxList";
+import InputPill from "@/components/InputPill";
 
-import Link from "next/link";
+const AboutYou = ({setScreen, setForm, form}) => {
 
-const AboutYou = ({setScreen}) => {
-  const router = useRouter();
+    const [selectedServices, setSelectedServices] = useState([]);
+    const [skills, setSkills] = useState("");
+    
+    const services = [
+        "Copywriting", 
+        "Email Marketing", 
+        "Graphic Design", 
+        "Marketing Strategy", 
+        "Video Marketing", 
+        "Search Engine Optimization", 
+        "Social Media Marketing", 
+        "Web Analytics", 
+        "Web Development"
+    ]
+
+    const updateSelected = (index, value) => {
+        var selected = selectedServices;
+        if(value) {
+            selected.push(services[index]);
+        } else {
+            selected.splice(selected.indexOf(services[index]), 1);
+        }
+        console.log(selected);
+        setSelectedServices(selected);
+    }
+
+    const updateForm = () => {
+        setForm({
+            ...form,
+            services: selectedServices
+        });
+    }
+
+    const handleBack = () => {
+        updateForm();
+        setScreen("PG_STUDENT_EDUCATION");
+    }
+
+    const handleForward = () => {
+        updateForm();
+        setScreen("PG_STUDENT_CREATEACCOUNT");
+    }
 
 
   return (
@@ -28,6 +69,11 @@ const AboutYou = ({setScreen}) => {
                     </svg>
                 </div>
             </div>
+        </div>
+        <div className="px-32 py-4 w-full flex flex-col justify-start">
+            <InputPill title="Input Skills" placeholder="" setState={setSkills} inputType="text"/>
+            <label className="block text-lg font-semibold mb-2 text-black dark:text-white">Areas of Interest</label>
+            <CheckboxList list={services} updateSelected={updateSelected}/>
         </div>
     </div>
   );
