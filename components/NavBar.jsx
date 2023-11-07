@@ -52,7 +52,7 @@ const NavBar = () => {
       </div>
       <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
         <div className="text-lg lg:flex-grow lg:flex lg:justify-center">
-          <Link href="/" className={navBtnStyles + " mr-16"}>
+          <Link href="/home" className={navBtnStyles + " mr-16"}>
             Home
           </Link>
           <Link href="#/marketplace" className={navBtnStyles + " mr-16"}>
