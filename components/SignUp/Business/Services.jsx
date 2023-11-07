@@ -62,7 +62,7 @@ const Services = ({setScreen, setForm, form}) => {
             <div className="px-4">
                 <div className=" cursor-pointer h-4 w-4 hover:scale-125 transition" onClick={handleForward}>
                     <svg xmlns="http://www.w3.org/2000/svg" width="19" height="14" viewBox="0 0 19 14" fill="none">
-                        <path d="M11.93 1L18 7.07L11.93 13.14M1 7.07H17.83" stroke="black" stroke-width="1.5" stroke-miterlimit="10" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M11.93 1L18 7.07L11.93 13.14M1 7.07H17.83" stroke="black" strokeWidth="1.5" strokeMiterlimit="10" strokeLinecap="round" strokeLinejoin="round"/>
                     </svg>
                 </div>
             </div>

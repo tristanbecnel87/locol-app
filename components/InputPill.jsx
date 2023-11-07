@@ -4,7 +4,7 @@ const InputPill = ({title, placeholder, setState, inputType}) => {
   return (
     <div className="my-4">
         <label className="block text-lg font-semibold mb-2 text-black dark:text-white">{title}</label>
-        <input type={inputType} class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
+        <input type={inputType} className="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
              onChange={(e) => setState(e.target.value)}  placeholder={placeholder}
         />
     </div>

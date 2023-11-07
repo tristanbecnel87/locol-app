@@ -164,7 +164,7 @@
      ]
     },
     "bucket": "cdk-hnb659fds-assets-089303059112-us-east-1",
-    "key": "3e09176fd321afd469735090890703883e17a69e10f519a338218b82cbbf1b32.zip",
+    "key": "452d44b9de0a05f4d7f9fb9f4aa6eb4ebc7406c4fb2153d4c21e0fa74ef40e44.zip",
     "replacements": []
    },
    "DependsOn": [
@@ -181,7 +181,7 @@
     ],
     "Code": {
      "S3Bucket": "cdk-hnb659fds-assets-089303059112-us-east-1",
-     "S3Key": "3e09176fd321afd469735090890703883e17a69e10f519a338218b82cbbf1b32.zip"
+     "S3Key": "452d44b9de0a05f4d7f9fb9f4aa6eb4ebc7406c4fb2153d4c21e0fa74ef40e44.zip"
     },
     "Description": "Server handler placeholder",
     "Environment": {

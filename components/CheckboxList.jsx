@@ -3,7 +3,7 @@ import React, {useState} from 'react'
 const CheckboxList = ({list, updateSelected}) => {
 
   return (
-    <ul class="flex flex-col ">
+    <ul className="flex flex-col ">
         {list.map((item, index) => <CheckboxItem name={item} key={index} index={index} changeSelected={updateSelected}/>)}
     </ul>
   )

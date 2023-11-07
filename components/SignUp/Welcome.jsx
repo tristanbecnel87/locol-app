@@ -37,10 +37,10 @@ const Welcome = ({setUserType, setScreen}) => {
         </div>
         <div className="px-32 pt-4">
             <h1 className="font-bold text-neutral-800 text-xl">Who are you?</h1>
-            <div class=" my-4 py-2 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg cursor-pointer hover:bg-slate-100 transition" onClick={setStudent}>
+            <div className=" my-4 py-2 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg cursor-pointer hover:bg-slate-100 transition" onClick={setStudent}>
                 <h2 className="text-neutral-800 text-lg font-medium pl-5">Student</h2>
             </div>
-            <div class=" my-4 py-2 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg cursor-pointer hover:bg-slate-100 transition" onClick={setBusiness}>
+            <div className=" my-4 py-2 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg cursor-pointer hover:bg-slate-100 transition" onClick={setBusiness}>
                 <h2 className="text-neutral-800k text-lg font-medium pl-5">Business</h2>
             </div>
         </div>
