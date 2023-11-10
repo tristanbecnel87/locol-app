@@ -78,7 +78,7 @@ const Login = () => {
               </defs>
             </svg>
           </div>
-          <input type="checkbox" id="business-or-student" class="relative shrink-0 w-[3.25rem] h-7
+          <input type="checkbox" id="business-or-student" className="relative shrink-0 w-[3.25rem] h-7
            bg-sky-900 rounded-full cursor-pointer transition-colors ease-in-out duration-200 
            border border-transparent ring-1 ring-transparent ring-offset-white focus:outline-none 
            appearance-none before:inline-block before:w-6 before:h-6
@@ -92,13 +92,13 @@ const Login = () => {
         </div>
         <div className="mb-4 mx-20">
           <label className="block text-sm font-semibold mb-2 text-black dark:text-white">Email:</label>
-          <input type="email" class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
+          <input type="email" className="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
             value={email} onChange={(e) => setEmail(e.target.value)} 
           />
         </div>
         <div className="mb-6 mx-20">
           <label className="block text-sm font-semibold mb-2 text-black dark:text-white">Password:</label>
-          <input type={showPassword ? "text" : "password"} class="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
+          <input type={showPassword ? "text" : "password"} className="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
             value={password} onChange={(e) => setPassword(e.target.value)} 
           />
         </div>

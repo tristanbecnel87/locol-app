@@ -7,6 +7,7 @@ import InputPill from "@/components/InputPill";
 
 const BasicInfo = ({setScreen, setForm, form}) => {
 
+    const [businessName, setBusinessName] = useState("");
     const [officeLocation, setOfficeLocation] = useState("");
     const [industry, setIndustry] = useState("");
     const [companyFounded, setCompanyFounded] = useState("");
@@ -14,6 +15,7 @@ const BasicInfo = ({setScreen, setForm, form}) => {
     const updateForm = () => {
         setForm({
             ...form,
+            businessName: businessName,
             officeLocation: officeLocation,
             industry: industry,
             companyFounded: companyFounded
@@ -52,6 +54,7 @@ const BasicInfo = ({setScreen, setForm, form}) => {
             </div>
         </div>
         <div className="px-32 py-4 w-full flex flex-col justify-start">
+            <InputPill title="What is the name of your business?" placeholder="" setState={setBusinessName} inputType="text"/>
             <InputPill title="Where is your office located?" placeholder="City, State" setState={setOfficeLocation} inputType="text"/>
             <InputPill title="What industry are you part of?" placeholder="Manufacturing, Software Development, etc." setState={setIndustry} inputType="text" />
             <InputPill title="When was the company founded?" placeholder="mm-dd-yyyy" setState={setCompanyFounded} inputType="text" />
