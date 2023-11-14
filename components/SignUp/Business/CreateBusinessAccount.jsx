@@ -1,10 +1,13 @@
 "use client";
-import React, {useState } from "react";
+import React, {useState, useEffect} from "react";
 
 import Link from "next/link";
 import InputPill from "@/components/InputPill";
+import ConfirmSignUpModal from "../ConfirmSignUpModal";
 
-const CreateBusinessAccount = ({setScreen, setForm, form, signUp}) => {
+const CreateBusinessAccount = ({setScreen, setForm, form, signUp, confirm}) => {
+    
+    const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");  
@@ -14,24 +17,28 @@ const CreateBusinessAccount = ({setScreen, setForm, form, signUp}) => {
             ...form,    
             email: email,
             password: password,
+            fullName: fullName,
         });
     }
 
     useEffect(() => {
+        import('preline');
+    }, [])
 
+    useEffect(() => {
         updateForm();
-    }, [email, password, confirmPassword])
+    }, [email, password, confirmPassword, fullName])
 
     const handleBack = () => {
         updateForm();
-        setScreen("PG_STUDENT_ABOUTYOU");
+        setScreen("PG_BUSINESS_SERVICES");
     }
 
     const handleSubmit = () => {
         updateForm();
         if(password === confirmPassword) {
             signUp();
-        }
+        } // TODO: otherwise error toast message?
     }
 
 
@@ -51,6 +58,7 @@ const CreateBusinessAccount = ({setScreen, setForm, form, signUp}) => {
             <div className="px-4" />
         </div>
         <div className="px-32 pt-4 w-full flex flex-col justify-start">
+            <InputPill title="Full Name" placeholder="" setState={setFullName} inputType="text" />
             <div className="mt-4 mb-1">
                 <label className="block text-lg font-semibold mb-2 text-black dark:text-white">Email</label>
                 <input type="email" className="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
@@ -63,14 +71,21 @@ const CreateBusinessAccount = ({setScreen, setForm, form, signUp}) => {
         </div>
         
         <div className=" flex pt-8 flex-col justify-center items-center">
+
             <button
                 className="bg-sky-900 text-white rounded-full py-2 px-4 hover:bg-sky-700 transition duration-300"
+                data-hs-overlay="#hs-vertically-centered-modal"
                 onClick={handleSubmit}
             >
                 <h2 className=" mx-8 font-semibold">Create Account</h2>
             </button>
-            <p className="pt-4 text-gray-400 text-center pb-5">
+            <ConfirmSignUpModal username={email} password={password} confirm={confirm} />
+            
+            <p className="pt-4 text-gray-400 text-center">
                 Already have an account? <Link className=" text-rawSienna-500"  href="/signIn">Sign in</Link> instead.
+            </p>
+            <p className="pt-1 text-gray-400 text-center pb-5">
+                Have a confirmation code? Enter it <button className="text-rawSienna-500" data-hs-overlay="#hs-vertically-centered-modal"> here</button>.
             </p>
         </div>
     </div>

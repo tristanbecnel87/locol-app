@@ -25,7 +25,6 @@ const Services = ({setScreen, setForm, form}) => {
         } else {
             selected.splice(selected.indexOf(services[index]), 1);
         }
-        console.log(selected);
         setSelectedServices(selected);
     }
 

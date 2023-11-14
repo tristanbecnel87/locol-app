@@ -1,31 +1,3 @@
-<<<<<<< HEAD
-2023-11-07T00:10:19.926Z   +763ms [debug] Config loaded {"version":"2.18.3","cdkVersion":"2.84.0","constructsVersion":"10.1.156","config":{"name":"locol-app","region":"us-east-1","stage":"shazmomin","ssmPrefix":"/sst/locol-app/shazmomin/"},"metafile":{"inputs":{"sst.config.ts":{"bytes":213,"imports":[{"path":"sst","kind":"import-statement","external":true},{"path":"sst/constructs","kind":"import-statement","external":true}]}},"outputs":{".sst.config.1699315819811.mjs":{"imports":[],"exports":["default"],"entryPoint":"sst.config.ts","inputs":{"sst.config.ts":{"bytesInOutput":124}},"bytes":306}}},"paths":{"config":"/Users/saood/Documents/coding/Locol/locol-app/sst.config.ts","root":"/Users/saood/Documents/coding/Locol/locol-app","out":"/Users/saood/Documents/coding/Locol/locol-app/.sst","artifacts":"/Users/saood/Documents/coding/Locol/locol-app/.sst/artifacts"}}
-2023-11-07T00:10:21.910Z  +1984ms [debug] Using AWS profile 
-2023-11-07T00:10:21.962Z    +52ms [debug] Created AWS client IoTClient
-2023-11-07T00:10:21.962Z     +0ms [debug] Getting IoT endpoint
-2023-11-07T00:10:22.169Z   +207ms [debug] Using IoT endpoint: atksk1uuo6fzn-ats.iot.us-east-1.amazonaws.com
-2023-11-07T00:10:22.169Z     +0ms [debug] Initializing bootstrap context
-2023-11-07T00:10:22.171Z     +2ms [debug] Created AWS client CloudFormationClient
-2023-11-07T00:10:22.462Z   +291ms [debug] Loaded bootstrap status
-2023-11-07T00:10:22.462Z     +0ms [debug] Bootstrap context initialized {"version":"7.2","bucket":"sstbootstrap-useast124d14e4b-jx55k0grntg2"}
-2023-11-07T00:10:22.463Z     +1ms [debug] Created AWS client S3Client
-2023-11-07T00:10:22.500Z    +37ms [debug] Fetching all metadata
-2023-11-07T00:10:22.749Z   +249ms [debug] IoT connected
-2023-11-07T00:10:22.750Z     +1ms [debug] Fetched metadata from 0 stacks
-2023-11-07T00:10:22.751Z     +1ms [debug] Created AWS client SSMClient
-2023-11-07T01:20:06.927Z +4184176ms [debug] IoT error {"errno":-54,"code":"ECONNRESET","syscall":"read","type":"error","target":{"_events":{},"_eventsCount":0,"readyState":3,"bytesReceived":61,"extensions":null,"protocol":"mqttv3.1","_binaryType":"arraybuffer","_closeFrameReceived":false,"_closeFrameSent":false,"_closeMessage":"","_closeTimer":null,"_finalized":true,"_closeCode":1006,"_receiver":null,"_sender":null,"_socket":null,"_ultron":null,"protocolVersion":13,"_isServer":false,"url":"wss://atksk1uuo6fzn-ats.iot.us-east-1.amazonaws.com/mqtt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT2G2PUBEIV6ITHMZ%2F20231107%2Fus-east-1%2Fiotdevicegateway%2Faws4_request&X-Amz-Date=20231107T001022Z&X-Amz-SignedHeaders=host&X-Amz-Signature=a6ffa42dc2bdfd482ec288622151f71b703ae504741de449ab0320470b2d8374","_req":null}}
-2023-11-07T01:20:06.938Z    +11ms [debug] IoT closed
-2023-11-07T01:20:07.942Z  +1004ms [debug] IoT reconnected
-2023-11-07T01:20:08.281Z   +339ms [debug] IoT connected
-2023-11-07T01:33:27.077Z +798796ms [debug] IoT error {"errno":-54,"code":"ECONNRESET","syscall":"read","type":"error","target":{"_events":{},"_eventsCount":0,"readyState":3,"bytesReceived":13,"extensions":null,"protocol":"mqttv3.1","_binaryType":"arraybuffer","_closeFrameReceived":false,"_closeFrameSent":false,"_closeMessage":"","_closeTimer":null,"_finalized":true,"_closeCode":1006,"_receiver":null,"_sender":null,"_socket":null,"_ultron":null,"protocolVersion":13,"_isServer":false,"url":"wss://atksk1uuo6fzn-ats.iot.us-east-1.amazonaws.com/mqtt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT2G2PUBEIV6ITHMZ%2F20231107%2Fus-east-1%2Fiotdevicegateway%2Faws4_request&X-Amz-Date=20231107T012007Z&X-Amz-SignedHeaders=host&X-Amz-Signature=806e469cea56458667bc93e1c5ff586138725a317b45472b3c9f0a314e856c98","_req":null}}
-2023-11-07T01:33:27.078Z     +1ms [debug] IoT closed
-2023-11-07T01:33:28.079Z  +1001ms [debug] IoT reconnected
-2023-11-07T01:33:28.373Z   +294ms [debug] IoT connected
-2023-11-07T01:47:11.255Z +822882ms [debug] IoT error {"errno":-54,"code":"ECONNRESET","syscall":"read","type":"error","target":{"_events":{},"_eventsCount":0,"readyState":3,"bytesReceived":13,"extensions":null,"protocol":"mqttv3.1","_binaryType":"arraybuffer","_closeFrameReceived":false,"_closeFrameSent":false,"_closeMessage":"","_closeTimer":null,"_finalized":true,"_closeCode":1006,"_receiver":null,"_sender":null,"_socket":null,"_ultron":null,"protocolVersion":13,"_isServer":false,"url":"wss://atksk1uuo6fzn-ats.iot.us-east-1.amazonaws.com/mqtt?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAT2G2PUBEIV6ITHMZ%2F20231107%2Fus-east-1%2Fiotdevicegateway%2Faws4_request&X-Amz-Date=20231107T013328Z&X-Amz-SignedHeaders=host&X-Amz-Signature=611a0771a08e13fcc0207b6271bbdcc1a67fa777695c97dc9d50f17919b7a955","_req":null}}
-2023-11-07T01:47:11.255Z     +0ms [debug] IoT closed
-2023-11-07T01:47:12.257Z  +1002ms [debug] IoT reconnected
-2023-11-07T01:47:12.680Z   +423ms [debug] IoT connected
-=======
 2023-11-02T23:38:44.490Z  +1898ms [debug] Config loaded {"version":"2.29.2","cdkVersion":"2.95.1","constructsVersion":"10.2.69","config":{"name":"locol-app","region":"us-east-1","stage":"shazmomin","ssmPrefix":"/sst/locol-app/shazmomin/"},"metafile":{"inputs":{"sst.config.ts":{"bytes":213,"imports":[{"path":"sst","kind":"import-statement","external":true},{"path":"sst/constructs","kind":"import-statement","external":true}],"format":"esm"}},"outputs":{".sst.config.1698968322630.mjs":{"imports":[],"exports":["default"],"entryPoint":"sst.config.ts","inputs":{"sst.config.ts":{"bytesInOutput":124}},"bytes":306}}},"paths":{"config":"C:\\Users\\surya\\workspaces\\texas_momentum\\locol-app\\sst.config.ts","root":"C:\\Users\\surya\\workspaces\\texas_momentum\\locol-app","out":"C:\\Users\\surya\\workspaces\\texas_momentum\\locol-app\\.sst","artifacts":"C:\\Users\\surya\\workspaces\\texas_momentum\\locol-app\\.sst\\artifacts"}}
 2023-11-02T23:38:51.253Z  +6763ms [debug] Using AWS profile 
 2023-11-02T23:38:51.339Z    +86ms [debug] Created AWS client IoTClient
@@ -144,4 +116,3 @@
 2023-11-04T04:29:52.847Z     +0ms [debug] IoT closed
 2023-11-04T04:29:53.853Z  +1006ms [debug] IoT reconnected
 2023-11-04T04:29:54.217Z   +364ms [debug] IoT connected
->>>>>>> 60f3893b78d5be8847457927e3062be00b20e5ff

@@ -5,6 +5,7 @@ import Link from "next/link";
 import InputPill from "@/components/InputPill";
 
 const CreateStudentAccount = ({setScreen, setForm, form, signUp}) => {
+    const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
@@ -14,12 +15,13 @@ const CreateStudentAccount = ({setScreen, setForm, form, signUp}) => {
             ...form,    
             email: email,
             password: password,
+            fullName: fullName,
         });
     }
 
     useEffect(() => {
         updateForm();
-    }, [email, password, confirmPassword])
+    }, [email, password, fullName, confirmPassword])
 
     const handleBack = () => {
         updateForm();
@@ -30,7 +32,7 @@ const CreateStudentAccount = ({setScreen, setForm, form, signUp}) => {
         updateForm();
         if(password === confirmPassword) {
             signUp();
-        }
+        } // TODO: otherwise error toast message?
     }
 
 
@@ -50,6 +52,7 @@ const CreateStudentAccount = ({setScreen, setForm, form, signUp}) => {
             <div className="px-4" />
         </div>
         <div className="px-32 pt-4 w-full flex flex-col justify-start">
+            <InputPill title="Full Name" placeholder="" setState={setFullName} inputType="text" />
             <div className="mt-4 mb-1">
                 <label className="block text-lg font-semibold mb-2 text-black dark:text-white">Email</label>
                 <input type="email" className="py-3 px-4 block w-full border border-stone-300 rounded-full text-sm shadow-lg" 
