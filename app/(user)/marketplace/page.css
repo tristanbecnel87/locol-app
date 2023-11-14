@@ -1,0 +1,128 @@
+/* Page.css */
+.page-container {
+  display: flex;
+  height: 100vh; /* Set the container to full viewport height */
+  max-height: 125vh; /* Limit the height to the column's viewport minus padding */
+
+}
+
+.left-column {
+  background-color: #00416B;
+  padding: 20px;
+  width: 200px; /* Adjust the width as needed */
+  height: 100%; /* Set the height to 100% to extend to the bottom */
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 220px; /* Adjust margin to leave space for the left column */
+  padding: 20px;
+}
+.index-image {
+  width: 200px; /* Adjust the width as needed */
+  height: 200px;
+  position: absolute;
+  top: 10px; /* Adjust the top and left values to position the image */
+  left: 10px;
+}
+.image-content {
+  width: 100%;
+  height: 100%;
+  align-content: center;
+  /* Adjust the value to move the image down as desired */
+}
+
+.index-content {
+  width: 100%;
+  height: 100%;
+   display: flex;
+  flex-direction: column;
+  flex: 1; /* Allow the content to grow vertically */
+}
+.index-content-text {
+  text-align: left;
+  color: #D6D6D6;
+  font-family: "Open Sans";
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  font-size: 16px;
+}
+.content-container {
+  display: flex; /* Make the children flex items */
+  align-items: center; /* Align children vertically in the center */
+  margin-bottom: 10px; /* Adjust the margin as needed */
+
+}
+.content-container-seo {
+  color: #D6D6D6;
+font-family: "Open Sans";
+font-size: 16px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.marketplace-header {
+  color: #00416B;
+font-family: "Open Sans";
+font-size: 48px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.students-header {
+  color: #637481;
+font-family: Open Sans;
+font-size: 32px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+.space {
+  margin-bottom: 50px; /* Adjust the value to control the amount of white space */
+}
+/* Your existing Marketplace styles go here */
+
+.grid-container {
+  display: grid;
+   align-items: center;
+  grid-template-columns: repeat(3, 1fr); /* Create a 3x3 grid */
+  gap: 45px; /* Adjust the gap between grid items */
+  margin-top: 20px; /* Adjust the margin to separate the grid from the Marketplace */
+  width: 100%; /* Adjust the width of the grid container as needed */
+  vertical-align: top; /* Align text to the top */
+
+  height: 50vh;
+  align-items: flex-start;
+}
+
+
+.grid-item {
+  width: 215px;
+  height: 215px;
+  background-color: #00416B;
+  color: #fff;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  font-size: 17px;
+  color: #FFF;
+  font-family: Open Sans;
+  font-size: 31px;
+  font-style: normal;
+  font-weight: 1000;
+  line-height: 1.25;
+  vertical-align: top; /* Align text to the top */
+   text-align: center; /* Center text horizontally */
+
+  padding-bottom: 95px;
+  flex-direction: column;
+  border-radius: 10px; /* Adjust the value to control the rounding */
+
+}
+
+
+/* Style your dropdown and other elements as needed */
