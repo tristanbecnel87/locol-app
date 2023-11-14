@@ -10,6 +10,9 @@
   },
   "dependencies": {
     "@aws-amplify/ui-react": "^5.0.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@mui/material": "^5.14.14",
     "autoprefixer": "10.4.14",
     "aws-amplify": "^5.2.6",
     "eslint": "8.44.0",
