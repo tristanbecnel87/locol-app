@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import config from 'app/aws-exports';
 import { Amplify, Auth, Storage } from 'aws-amplify';
 import styles from './page.css'; // Import the CSS file
-import indexLogo from '/public/IndexLogo.svg';
+// import indexLogo from '/public/IndexLogo.svg';
 import Image from "next/image";
 
 

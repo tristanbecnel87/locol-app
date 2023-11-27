@@ -20,6 +20,8 @@ const SignUp = () => {
   const router = useRouter();
   const [userType, setUserType] = useState("");
   const [screen, setScreen] = useState("PG_WELCOME");
+  const [showConfirmationModal, setShowConfirmationModal] = useState(false);
+
   const [businessForm, setBusinessForm] = useState({
     officeLocation: "",
     industry: "",
@@ -42,6 +44,10 @@ const SignUp = () => {
     email: "",
     password: "",
   });
+
+  useEffect(() => {
+    console.log("show confirmation modal: ", showConfirmationModal);
+  }, [showConfirmationModal]);
 
   // useEffect(() => {
   //   console.log("business form changed");
@@ -72,7 +78,8 @@ const SignUp = () => {
           "custom:business" : "N/A"
         }
       });
-      console.log("User signed in", user.attributes);
+      setShowConfirmationModal(true);
+      console.log("User signed up", user.attributes);
     } catch (error) {
       console.log("Error signing in", error);
     }
@@ -95,6 +102,7 @@ const SignUp = () => {
           "custom:business" : businessForm.businessName
         }
       });
+      setShowConfirmationModal(true);
       console.log("User signed up", user.attributes);
     } catch (error) {
       console.log("Error signing in", error);
@@ -126,13 +134,13 @@ const SignUp = () => {
     } else if(screen === "PG_BUSINESS_SERVICES") {
       return <Services setScreen={setScreen} setForm={setBusinessForm} form={businessForm}/>
     }else if(screen === "PG_BUSINESS_CREATEACCOUNT") {
-      return <CreateBusinessAccount setScreen={setScreen} setForm={setBusinessForm} form={businessForm} signUp={handleBusinessSignUp} confirm={handleConfirmSignUp}/>
+      return <CreateBusinessAccount setScreen={setScreen} setForm={setBusinessForm} form={businessForm} signUp={handleBusinessSignUp} confirm={handleConfirmSignUp} showConfirmationModal={showConfirmationModal} setShowConfirmationModal={setShowConfirmationModal}/>
     }else if(screen === "PG_STUDENT_EDUCATION") {
       return <Education setScreen={setScreen} setForm={setStudentForm} form={studentForm}/>
     }else if(screen === "PG_STUDENT_ABOUTYOU") {
       return <AboutYou setScreen={setScreen} setForm={setStudentForm} form={studentForm}/>
     }else if(screen === "PG_STUDENT_CREATEACCOUNT") {
-      return <CreateStudentAccount setScreen={setScreen} setForm={setStudentForm} form={studentForm} signUp={handleStudentSignUp}/>
+      return <CreateStudentAccount setScreen={setScreen} setForm={setStudentForm} form={studentForm} signUp={handleStudentSignUp} confirm={handleConfirmSignUp} showConfirmationModal={showConfirmationModal} setShowConfirmationModal={setShowConfirmationModal}/>
     }else {
       return <div>Error</div>
     }

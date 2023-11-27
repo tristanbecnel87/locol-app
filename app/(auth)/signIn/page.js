@@ -7,6 +7,7 @@ import { Amplify } from "aws-amplify";
 import config from "app/aws-exports";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+
 Amplify.configure(config);
 
 
