@@ -3,8 +3,10 @@ import React, {useEffect, useState } from "react";
 
 import Link from "next/link";
 import InputPill from "@/components/InputPill";
+import ConfirmSignUpModal from "../ConfirmSignUpModal";
 
-const CreateStudentAccount = ({setScreen, setForm, form, signUp}) => {
+
+const CreateStudentAccount = ({setScreen, setForm, form, signUp, confirm, showConfirmationModal, setShowConfirmationModal}) => {
     const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -37,7 +39,8 @@ const CreateStudentAccount = ({setScreen, setForm, form, signUp}) => {
 
 
   return (
-    <div className="w-[800px] min-h-min min-w-min bg-stone-50 p-6 rounded-3xl shadow-lg flex flex-col justify-evenly ">
+    <div>
+    <div className={`w-[800px] min-h-min min-w-min bg-stone-50 p-6 rounded-3xl shadow-lg flex flex-col justify-evenly ${showConfirmationModal ? "blur-md" : ""}`}>
         <div className="flex justify-between items-center mt-4">
             <div className="px-4">
                 <div className=" cursor-pointer h-4 w-4 hover:scale-125 transition" onClick={handleBack}>
@@ -71,10 +74,16 @@ const CreateStudentAccount = ({setScreen, setForm, form, signUp}) => {
             >
                 <h2 className=" mx-8 font-semibold">Create Account</h2>
             </button>
-            <p className="pt-4 text-gray-400 text-center pb-5">
+            <p className="pt-4 text-gray-400 text-center">
                 Already have an account? <Link className=" text-rawSienna-500"  href="/signIn">Sign in</Link> instead.
             </p>
+            <p className="pt-1 text-gray-400 text-center pb-5">
+                Have a confirmation code? Enter it <button className="text-rawSienna-500" onClick={() => setShowConfirmationModal(true)}> here</button>.
+            </p>
         </div>
+    </div>
+    {showConfirmationModal ? <ConfirmSignUpModal username={email} password={password} confirm={confirm} setShowConfirmationModal={setShowConfirmationModal} /> : null}
+
     </div>
   );
 };

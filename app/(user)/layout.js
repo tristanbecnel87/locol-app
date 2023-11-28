@@ -11,7 +11,7 @@ export const metadata = {
 export default async function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="font-montserrat">
+      <body className="font-montserrat vsc-initialized">
         <UserContextProvider>
           <header className="sticky top-0 z-30">
             <NavBar />
