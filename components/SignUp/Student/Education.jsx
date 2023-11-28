@@ -3,7 +3,7 @@ import React, {useState } from "react";
 import { useRouter } from "next/navigation";
 
 import InputPill from "@/components/InputPill";
-import Link from "next/link";
+import SelectBox from "@/components/SelectBox";
 
 const Education = ({setScreen, setForm, form}) => {
   const router = useRouter();
@@ -57,7 +57,8 @@ const Education = ({setScreen, setForm, form}) => {
         <div className="px-32 py-4 w-full flex flex-col justify-start">
             <InputPill title="What university do you attend?" placeholder="Type here..." setState={setUniversity} inputType="text"/>
             <InputPill title="What do you study?" placeholder="Type here..." setState={setMajor} inputType="text"/>
-            <InputPill title="What is your classification?" placeholder="Freshman, Sophomore, Junior, or Senior" setState={setClassification} inputType="text"/>
+            {/* <InputPill title="What is your classification?" placeholder="Freshman, Sophomore, Junior, or Senior" setState={setClassification} inputType="text"/> */}
+            <SelectBox title="What is your classification?" placeholder="Select Classification" options={["Freshman", "Sophomore", "Junior", "Senior", "Super Senior"]} setSelected={setClassification}/>
             <InputPill title="When do you graduate?" placeholder="mm-yyyy" setState={setGraduationDate} inputType="text"/>
         </div>
     </div>
