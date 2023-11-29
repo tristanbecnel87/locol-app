@@ -2,7 +2,7 @@
 const Footer = () => {
     return (
     <div>
-    <div className='flex m-2 mt-20 justify-between'>
+    <div className='flex m-2 justify-between'>
         <div className='object-fill h-20 w-96'><img className='flex justify-start m-5 mb-0 object-fill h-38 w-56' src='./LocolLogo.png'></img></div>
         <div className='flex'>
             <svg className='m-2' xmlns="http://www.w3.org/2000/svg" width="55" height="55" viewBox="0 0 55 55" fill="none"> <circle cx="27.5" cy="27.5" r="27.5" fill="#F0F0F0" /> <path d="M44.2686 19.8505C43.8661 18.3349 42.6801 17.1412 41.1743 16.7361C38.4448 16 27.5 16 27.5 16C27.5 16 16.5552 16 13.8257 16.7361C12.3199 17.1413 11.1339 18.3349 10.7314 19.8505C10 22.5977 10 28.3295 10 28.3295C10 28.3295 10 34.0613 10.7314 36.8085C11.1339 38.3242 12.3199 39.4681 13.8257 39.8732C16.5552 40.6093 27.5 40.6093 27.5 40.6093C27.5 40.6093 38.4447 40.6093 41.1743 39.8732C42.6801 39.4681 43.8661 38.3242 44.2686 36.8085C45 34.0613 45 28.3295 45 28.3295C45 28.3295 45 22.5977 44.2686 19.8505ZM23.9204 33.5336V23.1255L33.0681 28.3297L23.9204 33.5336Z" fill="#E02D20" /> </svg>
